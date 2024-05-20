@@ -2,21 +2,34 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Tela1 extends JFrame{
+public class Tela1 extends JFrame {
     
-    JPanel painel = new JPanel(); //Gerando um painel
+    // Gerando um painel
+    JPanel painel = new JPanel(); 
 
-    public Tela1(){
+    public Tela1() {
+        initializePanel();
+        addComponentsToPanel();
+    }
 
-        //Area de Texto
+    private void initializePanel() {
+        // Adicionando uma cor de fundo
+        painel.setBackground(new Color(34, 107, 176));
+
+        // Adicionando o painel ao quadro
+        App.quadro.add(painel);
+    }
+
+    private void addComponentsToPanel() {
+        // Area de Texto
         painel.add(App.areaTexto);
-        
-        //Adicionando os botoes
+
+         // Adicionando os botoes ao painel
         painel.add(BotoesPadrao.Botao0());
         painel.add(BotoesPadrao.Botao1());
         painel.add(BotoesPadrao.Botao2());
         painel.add(BotoesPadrao.Botao3());
-        painel.add(BotoesPadrao.Botao4());    
+        painel.add(BotoesPadrao.Botao4());
         painel.add(BotoesPadrao.Botao5());
         painel.add(BotoesPadrao.Botao6());
         painel.add(BotoesPadrao.Botao7());
@@ -29,12 +42,5 @@ public class Tela1 extends JFrame{
         painel.add(BotoesPadrao.BotaoSoma());
         painel.add(BotoesPadrao.BotaoDivisao());
         painel.add(BotoesPadrao.BotaoMultiplicacao());
-
-        //Adicionando uma cor de fundo
-        painel.setBackground(new Color(34, 107, 176));
-        
-        //Adicionando o painel ao quadro
-        App.quadro.add(painel);
     }
-
 }
