@@ -24,7 +24,7 @@ public class Tela1 extends JFrame {
         // Area de Texto
         painel.add(App.areaTexto);
 
-         // Adicionando os botoes ao painel
+        // Adicionando os botoes ao painel
         painel.add(BotoesPadrao.Botao0());
         painel.add(BotoesPadrao.Botao1());
         painel.add(BotoesPadrao.Botao2());
@@ -42,5 +42,29 @@ public class Tela1 extends JFrame {
         painel.add(BotoesPadrao.BotaoSoma());
         painel.add(BotoesPadrao.BotaoDivisao());
         painel.add(BotoesPadrao.BotaoMultiplicacao());
+        painel.add(BotoesPadrao.BotaoPorcentagem());
+        painel.add(BotoesPadrao.BotaoSinal());
+        painel.add(BotoesPadrao.BotaoRaizQuadrada());
+        painel.add(BotoesPadrao.BotaoElevadoPotenciaDois());
+        painel.add(BotoesPadrao.BotaoUmSobreX());
+        painel.add(BotoesPadrao.BotaoVirgula());
+        painel.add(BotoesCientifico.BotaoPi());
+        painel.add(BotoesCientifico.BotaoEuler());
+        painel.add(BotoesCientifico.BotaoFatorial());
+        painel.add(BotoesCientifico.BotaoAbrindoParenteses());
+        painel.add(BotoesCientifico.BotaoFechandoParenteses());
+        painel.add(BotoesCientifico.BotaoEXP());
+        painel.add(BotoesCientifico.BotaoModulo());
+        painel.add(BotoesCientifico.BotaoResto());
+        painel.add(BotoesCientifico.BotaoXElevadoPotenciaY());
+        painel.add(BotoesCientifico.BotaoDezElevadoPotenciaX());
+        painel.add(BotoesCientifico.BotaoLogaritmo());
+        painel.add(BotoesCientifico.BotaoLogaritmoNatural());
+        painel.add(BotoesCientifico.BotaoXElevadoPotencia3());
+        painel.add(BotoesCientifico.BotaoRaizCubicaX());
+        painel.add(BotoesCientifico.BotaoRaizYX());
+        painel.add(BotoesCientifico.BotaoDoisElevadoPotenciaX());
+        painel.add(BotoesCientifico.BotaoLogYBaseX());
+        painel.add(BotoesCientifico.BotaoEElevadoPotenciaX());
     }
 }

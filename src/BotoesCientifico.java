@@ -2,401 +2,329 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class BotoesPadrao {
+public class BotoesCientifico {
 
     private static JButton botao; //botao que será aplicado.
 
-    public static JButton Botao0(){
+    public static JButton BotaoPi(){
         botao = new JButton();
         //botao.setFont(new Font("Ravie", 1, 18));
         botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" 0 ");
+        botao.setText(" π ");
         botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
         botao.setRequestFocusEnabled(false);
         botao.setRolloverEnabled(true);
         botao.setMargin(new Insets(2, 1000, 2, 14));
 
         botao.addActionListener((ActionEvent e) -> {
-                App.textoInserido += "0";
+                App.textoInserido += App.formatoDecimal.format(Math.PI);
                 App.areaTexto.setText(App.textoInserido);
         });
 
         return botao;
     }
 
-    public static JButton Botao1(){
+    public static JButton BotaoEuler(){
         botao = new JButton();
         //botao.setFont(new Font("Ravie", 1, 18));
         botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" 1 ");
+        botao.setText(" e ");
         botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
         botao.setRequestFocusEnabled(false);
         botao.setRolloverEnabled(true);
         botao.setMargin(new Insets(2, 1000, 2, 14));
 
         botao.addActionListener((ActionEvent e) -> {
-            App.textoInserido += "1";
-            App.areaTexto.setText(App.textoInserido);
-        });
-
-        return botao;
-    }
-
-    public static JButton Botao2(){
-        botao = new JButton();
-        //botao.setFont(new Font("Ravie", 1, 18));
-        botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" 2 ");
-        botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
-        botao.setRequestFocusEnabled(false);
-        botao.setRolloverEnabled(true);
-        botao.setMargin(new Insets(2, 1000, 2, 14));
-
-        botao.addActionListener((ActionEvent e) -> {
-            App.textoInserido += "2";
-            App.areaTexto.setText(App.textoInserido);
-        });
-        return botao;
-    }
-
-    public static JButton Botao3(){
-        botao = new JButton();
-        //botao.setFont(new Font("Ravie", 1, 18));
-        botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" 3 ");
-        botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
-        botao.setRequestFocusEnabled(false);
-        botao.setRolloverEnabled(true);
-        botao.setMargin(new Insets(2, 1000, 2, 14));
-
-        botao.addActionListener((ActionEvent e) -> {
-            App.textoInserido += "3";
-            App.areaTexto.setText(App.textoInserido);
-        });
-        return botao;
-    }
-
-    public static JButton Botao4(){
-        botao = new JButton();
-        //botao.setFont(new Font("Ravie", 1, 18));
-        botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" 4 ");
-        botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
-        botao.setRequestFocusEnabled(false);
-        botao.setRolloverEnabled(true);
-        botao.setMargin(new Insets(2, 1000, 2, 14));
-
-        botao.addActionListener((ActionEvent e) -> {
-            App.textoInserido += "4";
-            App.areaTexto.setText(App.textoInserido);
-        });
-        return botao;
-    }
-
-    public static JButton Botao5(){
-        botao = new JButton();
-        //botao.setFont(new Font("Ravie", 1, 18));
-        botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" 5 ");
-        botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
-        botao.setRequestFocusEnabled(false);
-        botao.setRolloverEnabled(true);
-        botao.setMargin(new Insets(2, 1000, 2, 14));
-
-        botao.addActionListener((ActionEvent e) -> {
-            App.textoInserido += "5";
-            App.areaTexto.setText(App.textoInserido);
-        });
-        return botao;
-    }
-
-    public static JButton Botao6(){
-        botao = new JButton();
-        //botao.setFont(new Font("Ravie", 1, 18));
-        botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" 6 ");
-        botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
-        botao.setRequestFocusEnabled(false);
-        botao.setRolloverEnabled(true);
-        botao.setMargin(new Insets(2, 1000, 2, 14));
-
-        botao.addActionListener((ActionEvent e) -> {
-            App.textoInserido += "6";
-            App.areaTexto.setText(App.textoInserido);
-        });
-        return botao;
-    }
-
-    public static JButton Botao7(){
-        botao = new JButton();
-        //botao.setFont(new Font("Ravie", 1, 18));
-        botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" 7 ");
-        botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
-        botao.setRequestFocusEnabled(false);
-        botao.setRolloverEnabled(true);
-        botao.setMargin(new Insets(2, 1000, 2, 14));
-
-        botao.addActionListener((ActionEvent e) -> {
-            App.textoInserido += "7";
-            App.areaTexto.setText(App.textoInserido);
-        });
-        return botao;
-    }
-
-    public static JButton Botao8(){
-        botao = new JButton();
-        //botao.setFont(new Font("Ravie", 1, 18));
-        botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" 8 ");
-        botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
-        botao.setRequestFocusEnabled(false);
-        botao.setRolloverEnabled(true);
-        botao.setMargin(new Insets(2, 1000, 2, 14));
-
-        botao.addActionListener((ActionEvent e) -> {
-            App.textoInserido += "8";
-            App.areaTexto.setText(App.textoInserido);
-        });
-        return botao;
-    }
-
-    public static JButton Botao9(){
-        botao = new JButton();
-        //botao.setFont(new Font("Ravie", 1, 18));
-        botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" 9 ");
-        botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
-        botao.setRequestFocusEnabled(false);
-        botao.setRolloverEnabled(true);
-        botao.setMargin(new Insets(2, 1000, 2, 14));
-
-        botao.addActionListener((ActionEvent e) -> {
-            App.textoInserido += "9";
-            App.areaTexto.setText(App.textoInserido);
-        });
-        return botao;
-    }
-
-    public static JButton BotaoIgual(){
-        botao = new JButton();
-        //botao.setFont(new Font("Ravie", 1, 18));
-        botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" = ");
-        botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
-        botao.setRequestFocusEnabled(false);
-        botao.setRolloverEnabled(true);
-        botao.setMargin(new Insets(2, 1000, 2, 14));
-
-        botao.addActionListener((ActionEvent e) -> {
-            Calcular.Resultado();
-        });
-
-        return botao;
-    }
-
-    public static JButton BotaoApagar(){
-        botao = new JButton();
-        //botao.setFont(new Font("Ravie", 1, 18));
-        botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" <= ");
-        botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
-        botao.setRequestFocusEnabled(false);
-        botao.setRolloverEnabled(true);
-        botao.setMargin(new Insets(2, 1000, 2, 14));
-
-        botao.addActionListener((ActionEvent e) -> {
-            if (App.textoInserido.length() != 0) {
-                App.textoInserido = App.textoInserido.substring(0, App.textoInserido.length() - 1);
+                App.textoInserido += App.formatoDecimal.format(Math.E);
                 App.areaTexto.setText(App.textoInserido);
-            }
         });
 
         return botao;
     }
 
-    public static JButton BotaoApagarTudo(){
+    public static JButton BotaoFatorial(){
         botao = new JButton();
+        //botao.setFont(new Font("Ravie", 1, 18));
         botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" DEL ");
+        botao.setText(" n! ");
         botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
         botao.setRequestFocusEnabled(false);
         botao.setRolloverEnabled(true);
         botao.setMargin(new Insets(2, 1000, 2, 14));
 
         botao.addActionListener((ActionEvent e) -> {
-            App.textoInserido = "";
-            App.areaTexto.setText(App.textoInserido);
+                App.textoInserido += "n!";
+                App.areaTexto.setText(App.textoInserido);
         });
 
         return botao;
     }
 
-    public static JButton BotaoSubtracao(){
+    public static JButton BotaoAbrindoParenteses(){
         botao = new JButton();
+        //botao.setFont(new Font("Ravie", 1, 18));
         botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" - ");
+        botao.setText(" ( ");
         botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
         botao.setRequestFocusEnabled(false);
         botao.setRolloverEnabled(true);
         botao.setMargin(new Insets(2, 1000, 2, 14));
 
         botao.addActionListener((ActionEvent e) -> {
-            App.textoInserido += "-";
-            App.areaTexto.setText(App.textoInserido);
+                App.textoInserido += "(";
+                App.areaTexto.setText(App.textoInserido);
         });
 
         return botao;
     }
 
-    public static JButton BotaoSoma(){
+    public static JButton BotaoFechandoParenteses(){
         botao = new JButton();
+        //botao.setFont(new Font("Ravie", 1, 18));
         botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" + ");
+        botao.setText(" ) ");
         botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
         botao.setRequestFocusEnabled(false);
         botao.setRolloverEnabled(true);
         botao.setMargin(new Insets(2, 1000, 2, 14));
 
         botao.addActionListener((ActionEvent e) -> {
-            App.textoInserido += "+";
-            App.areaTexto.setText(App.textoInserido);
+                App.textoInserido += ")";
+                App.areaTexto.setText(App.textoInserido);
         });
 
         return botao;
     }
 
-    public static JButton BotaoDivisao(){
+    public static JButton BotaoEXP(){
         botao = new JButton();
+        //botao.setFont(new Font("Ravie", 1, 18));
         botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" ÷ ");
+        botao.setText(" exp ");
         botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
         botao.setRequestFocusEnabled(false);
         botao.setRolloverEnabled(true);
         botao.setMargin(new Insets(2, 1000, 2, 14));
 
         botao.addActionListener((ActionEvent e) -> {
-            App.textoInserido += "÷";
-            App.areaTexto.setText(App.textoInserido);
+                App.textoInserido += "exp";
+                App.areaTexto.setText(App.textoInserido);
         });
 
         return botao;
     }
 
-    public static JButton BotaoMultiplicacao(){
+    public static JButton BotaoModulo(){
         botao = new JButton();
+        //botao.setFont(new Font("Ravie", 1, 18));
         botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" X ");
+        botao.setText(" |x| ");
         botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
         botao.setRequestFocusEnabled(false);
         botao.setRolloverEnabled(true);
         botao.setMargin(new Insets(2, 1000, 2, 14));
 
         botao.addActionListener((ActionEvent e) -> {
-            App.textoInserido += "X";
-            App.areaTexto.setText(App.textoInserido);
+                App.textoInserido += "|x|";
+                App.areaTexto.setText(App.textoInserido);
         });
 
         return botao;
     }
 
-    public static JButton BotaoPorcentagem(){
+    public static JButton BotaoResto(){
         botao = new JButton();
+        //botao.setFont(new Font("Ravie", 1, 18));
         botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" % ");
+        botao.setText(" mod ");
         botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
         botao.setRequestFocusEnabled(false);
         botao.setRolloverEnabled(true);
         botao.setMargin(new Insets(2, 1000, 2, 14));
 
         botao.addActionListener((ActionEvent e) -> {
-            App.textoInserido += "%";
-            App.areaTexto.setText(App.textoInserido);
+                App.textoInserido += "mod";
+                App.areaTexto.setText(App.textoInserido);
         });
 
         return botao;
     }
 
-    public static JButton BotaoSinal(){
+    public static JButton BotaoXElevadoPotenciaY(){
         botao = new JButton();
+        //botao.setFont(new Font("Ravie", 1, 18));
         botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" +/- ");
+        botao.setText(" x^y ");
         botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
         botao.setRequestFocusEnabled(false);
         botao.setRolloverEnabled(true);
         botao.setMargin(new Insets(2, 1000, 2, 14));
 
         botao.addActionListener((ActionEvent e) -> {
-            App.textoInserido += "+/-";
-            App.areaTexto.setText(App.textoInserido);
+                App.textoInserido += "x^y";
+                App.areaTexto.setText(App.textoInserido);
         });
 
         return botao;
     }
-    
-    public static JButton BotaoRaizQuadrada(){
+
+    public static JButton BotaoDezElevadoPotenciaX(){
         botao = new JButton();
+        //botao.setFont(new Font("Ravie", 1, 18));
         botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" ²√x ");
+        botao.setText(" 10^x ");
         botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
         botao.setRequestFocusEnabled(false);
         botao.setRolloverEnabled(true);
         botao.setMargin(new Insets(2, 1000, 2, 14));
 
         botao.addActionListener((ActionEvent e) -> {
-            App.textoInserido += "²√x";
-            App.areaTexto.setText(App.textoInserido);
+                App.textoInserido += "10^x";
+                App.areaTexto.setText(App.textoInserido);
         });
 
         return botao;
     }
 
-    public static JButton BotaoElevadoPotenciaDois(){
+    public static JButton BotaoLogaritmo(){
         botao = new JButton();
+        //botao.setFont(new Font("Ravie", 1, 18));
         botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" x² ");
+        botao.setText(" log ");
         botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
         botao.setRequestFocusEnabled(false);
         botao.setRolloverEnabled(true);
         botao.setMargin(new Insets(2, 1000, 2, 14));
 
         botao.addActionListener((ActionEvent e) -> {
-            App.textoInserido += "x²";
-            App.areaTexto.setText(App.textoInserido);
+                App.textoInserido += "log";
+                App.areaTexto.setText(App.textoInserido);
         });
 
         return botao;
     }
 
-    public static JButton BotaoUmSobreX(){
+    public static JButton BotaoLogaritmoNatural(){
         botao = new JButton();
+        //botao.setFont(new Font("Ravie", 1, 18));
         botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" 1/x ");
+        botao.setText(" ln ");
         botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
         botao.setRequestFocusEnabled(false);
         botao.setRolloverEnabled(true);
         botao.setMargin(new Insets(2, 1000, 2, 14));
 
         botao.addActionListener((ActionEvent e) -> {
-            App.textoInserido += "1/x";
-            App.areaTexto.setText(App.textoInserido);
+                App.textoInserido += "ln";
+                App.areaTexto.setText(App.textoInserido);
         });
 
         return botao;
     }
 
-    public static JButton BotaoVirgula(){
+    public static JButton BotaoXElevadoPotencia3(){
         botao = new JButton();
+        //botao.setFont(new Font("Ravie", 1, 18));
         botao.setForeground(new Color(0, 0, 102));
-        botao.setText(" , ");
+        botao.setText(" x³ ");
         botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
         botao.setRequestFocusEnabled(false);
         botao.setRolloverEnabled(true);
         botao.setMargin(new Insets(2, 1000, 2, 14));
 
         botao.addActionListener((ActionEvent e) -> {
-            App.textoInserido += ",";
-            App.areaTexto.setText(App.textoInserido);
+                App.textoInserido += "x³";
+                App.areaTexto.setText(App.textoInserido);
+        });
+
+        return botao;
+    }
+
+    public static JButton BotaoRaizCubicaX(){
+        botao = new JButton();
+        //botao.setFont(new Font("Ravie", 1, 18));
+        botao.setForeground(new Color(0, 0, 102));
+        botao.setText(" ³√x ");
+        botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
+        botao.setRequestFocusEnabled(false);
+        botao.setRolloverEnabled(true);
+        botao.setMargin(new Insets(2, 1000, 2, 14));
+
+        botao.addActionListener((ActionEvent e) -> {
+                App.textoInserido += "³√x";
+                App.areaTexto.setText(App.textoInserido);
+        });
+
+        return botao;
+    }
+
+    public static JButton BotaoRaizYX(){
+        botao = new JButton();
+        //botao.setFont(new Font("Ravie", 1, 18));
+        botao.setForeground(new Color(0, 0, 102));
+        botao.setText(" y√x ");
+        botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
+        botao.setRequestFocusEnabled(false);
+        botao.setRolloverEnabled(true);
+        botao.setMargin(new Insets(2, 1000, 2, 14));
+
+        botao.addActionListener((ActionEvent e) -> {
+                App.textoInserido += "y√x";
+                App.areaTexto.setText(App.textoInserido);
+        });
+
+        return botao;
+    }
+
+    public static JButton BotaoDoisElevadoPotenciaX(){
+        botao = new JButton();
+        //botao.setFont(new Font("Ravie", 1, 18));
+        botao.setForeground(new Color(0, 0, 102));
+        botao.setText(" 2^x ");
+        botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
+        botao.setRequestFocusEnabled(false);
+        botao.setRolloverEnabled(true);
+        botao.setMargin(new Insets(2, 1000, 2, 14));
+
+        botao.addActionListener((ActionEvent e) -> {
+                App.textoInserido += "2^x";
+                App.areaTexto.setText(App.textoInserido);
+        });
+
+        return botao;
+    }
+
+    public static JButton BotaoLogYBaseX(){
+        botao = new JButton();
+        //botao.setFont(new Font("Ravie", 1, 18));
+        botao.setForeground(new Color(0, 0, 102));
+        botao.setText(" logyx ");
+        botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
+        botao.setRequestFocusEnabled(false);
+        botao.setRolloverEnabled(true);
+        botao.setMargin(new Insets(2, 1000, 2, 14));
+
+        botao.addActionListener((ActionEvent e) -> {
+                App.textoInserido += "logyx";
+                App.areaTexto.setText(App.textoInserido);
+        });
+
+        return botao;
+    }
+
+    public static JButton BotaoEElevadoPotenciaX(){
+        botao = new JButton();
+        //botao.setFont(new Font("Ravie", 1, 18));
+        botao.setForeground(new Color(0, 0, 102));
+        botao.setText(" e^x ");
+        botao.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
+        botao.setRequestFocusEnabled(false);
+        botao.setRolloverEnabled(true);
+        botao.setMargin(new Insets(2, 1000, 2, 14));
+
+        botao.addActionListener((ActionEvent e) -> {
+                App.textoInserido += "e^x";
+                App.areaTexto.setText(App.textoInserido);
         });
 
         return botao;

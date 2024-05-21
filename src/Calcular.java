@@ -19,8 +19,8 @@ public class Calcular {
             // Avalia a expressão
             double resultado = avaliarExpressao(input);
 
-            // Atualiza a área de texto com o resultado.
-            App.textoInserido = String.valueOf(resultado);
+            // Atualiza a área de texto com o resultado. 
+            App.textoInserido = String.valueOf(App.formatoDecimal.format(resultado));
             App.areaTexto.setText(App.textoInserido);
         } catch (Exception e) {
             App.areaTexto.setText("Error");
