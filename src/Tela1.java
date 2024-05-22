@@ -66,5 +66,10 @@ public class Tela1 extends JFrame {
         painel.add(BotoesCientifico.BotaoDoisElevadoPotenciaX());
         painel.add(BotoesCientifico.BotaoLogYBaseX());
         painel.add(BotoesCientifico.BotaoEElevadoPotenciaX());
+        painel.add(BotoesExtra.BotaoGradiente());
+        painel.add(BotoesExtra.BotaoArco());
+        painel.add(BotoesExtra.BotaoDelta());
+        painel.add(BotoesExtra.BotaoSigma());
+        painel.add(BotoesExtra.BotaoModoEscuroELuz());
     }
 }
