@@ -1,75 +1,99 @@
 import java.awt.Color;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.border.Border;
 
 public class Tela1 extends JFrame {
-    
+
     // Gerando um painel
-    JPanel painel = new JPanel(); 
+    JPanel painelAreaTexto = new JPanel(), painel = new JPanel(); 
+
+    //Gerando a barra de rolamento
+    JScrollPane barraRolamento = new JScrollPane(App.areaTexto, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
+    //Instaciando a classe dos Botões
+    BotoesPadrao botoesPadrao = new BotoesPadrao();
+    BotoesCientifico botoesCientifico = new BotoesCientifico();
+    BotoesExtra botoesExtra = new BotoesExtra();
 
     public Tela1() {
-        initializePanel();
-        addComponentsToPanel();
+        InicializarPainel();
+        AdicionarComponentesPainel();
     }
 
-    private void initializePanel() {
-        // Adicionando uma cor de fundo
-        painel.setBackground(new Color(34, 107, 176));
+    private void InicializarPainel() {
+        //Apagando o layout do painel
+        painelAreaTexto.setLayout(null);
+        painel.setLayout(null); 
+
+        //Definindo o tamanho do painel
+        painel.setBounds(0, 40, App.QUADRO_WIDTH, App.QUADRO_HEIGHT-40);
+        painelAreaTexto.setBounds(DesignGeral.PAT_X,DesignGeral.PAT_Y,DesignGeral.PAT_WIDTH,DesignGeral.PAT_HEIGHT);
 
         // Adicionando o painel ao quadro
+        App.quadro.add(painelAreaTexto);
         App.quadro.add(painel);
     }
 
-    private void addComponentsToPanel() {
-        // Area de Texto
-        painel.add(App.areaTexto);
+    private void AdicionarComponentesPainel() {
+        
+        //Area de Texto
+        barraRolamento.setBounds(0,0,DesignGeral.PAT_WIDTH,DesignGeral.PAT_HEIGHT);
+        painelAreaTexto.add(barraRolamento);
 
+        //Adicionando bordas
+        Border border = BorderFactory.createLineBorder(new Color(36, 100, 161), 5); //Definindo o molde da borda da area de texto.
+        barraRolamento.setBorder(border);
+        painel.setBorder(border);
+        
         // Adicionando os botoes ao painel
-        painel.add(BotoesPadrao.Botao0());
-        painel.add(BotoesPadrao.Botao1());
-        painel.add(BotoesPadrao.Botao2());
-        painel.add(BotoesPadrao.Botao3());
-        painel.add(BotoesPadrao.Botao4());
-        painel.add(BotoesPadrao.Botao5());
-        painel.add(BotoesPadrao.Botao6());
-        painel.add(BotoesPadrao.Botao7());
-        painel.add(BotoesPadrao.Botao8());
-        painel.add(BotoesPadrao.Botao9());
-        painel.add(BotoesPadrao.BotaoIgual());
-        painel.add(BotoesPadrao.BotaoApagar());
-        painel.add(BotoesPadrao.BotaoApagarTudo());
-        painel.add(BotoesPadrao.BotaoSubtracao());
-        painel.add(BotoesPadrao.BotaoSoma());
-        painel.add(BotoesPadrao.BotaoDivisao());
-        painel.add(BotoesPadrao.BotaoMultiplicacao());
-        painel.add(BotoesPadrao.BotaoPorcentagem());
-        painel.add(BotoesPadrao.BotaoSinal());
-        painel.add(BotoesPadrao.BotaoRaizQuadrada());
-        painel.add(BotoesPadrao.BotaoElevadoPotenciaDois());
-        painel.add(BotoesPadrao.BotaoUmSobreX());
-        painel.add(BotoesPadrao.BotaoVirgula());
-        painel.add(BotoesCientifico.BotaoPi());
-        painel.add(BotoesCientifico.BotaoEuler());
-        painel.add(BotoesCientifico.BotaoFatorial());
-        painel.add(BotoesCientifico.BotaoAbrindoParenteses());
-        painel.add(BotoesCientifico.BotaoFechandoParenteses());
-        painel.add(BotoesCientifico.BotaoEXP());
-        painel.add(BotoesCientifico.BotaoModulo());
-        painel.add(BotoesCientifico.BotaoResto());
-        painel.add(BotoesCientifico.BotaoXElevadoPotenciaY());
-        painel.add(BotoesCientifico.BotaoDezElevadoPotenciaX());
-        painel.add(BotoesCientifico.BotaoLogaritmo());
-        painel.add(BotoesCientifico.BotaoLogaritmoNatural());
-        painel.add(BotoesCientifico.BotaoXElevadoPotencia3());
-        painel.add(BotoesCientifico.BotaoRaizCubicaX());
-        painel.add(BotoesCientifico.BotaoRaizYX());
-        painel.add(BotoesCientifico.BotaoDoisElevadoPotenciaX());
-        painel.add(BotoesCientifico.BotaoLogYBaseX());
-        painel.add(BotoesCientifico.BotaoEElevadoPotenciaX());
-        painel.add(BotoesExtra.BotaoGradiente());
-        painel.add(BotoesExtra.BotaoArco());
-        painel.add(BotoesExtra.BotaoDelta());
-        painel.add(BotoesExtra.BotaoSigma());
-        painel.add(BotoesExtra.BotaoModoEscuroELuz());
+        painel.add(botoesPadrao.Botao0(                         (short)(App.QUADRO_WIDTH-172),(short)(App.QUADRO_HEIGHT-116),(short)50,(short)30                           ));//feito
+        painel.add(botoesPadrao.Botao1(                         (short)(App.QUADRO_WIDTH-228),(short)(App.QUADRO_HEIGHT-152),(short)50,(short)30                           ));//feito
+        painel.add(botoesPadrao.Botao2(                         (short)(App.QUADRO_WIDTH-172),(short)(App.QUADRO_HEIGHT-152),(short)50,(short)30                           ));//feito
+        painel.add(botoesPadrao.Botao3(                         (short)(App.QUADRO_WIDTH-116),(short)(App.QUADRO_HEIGHT-152),(short)50,(short)30                           ));//feito
+        painel.add(botoesPadrao.Botao4(                         (short)(App.QUADRO_WIDTH-228),(short)(App.QUADRO_HEIGHT-188),(short)50,(short)30                           ));//feito
+        painel.add(botoesPadrao.Botao5(                         (short)(App.QUADRO_WIDTH-172),(short)(App.QUADRO_HEIGHT-188),(short)50,(short)30                           ));//feito
+        painel.add(botoesPadrao.Botao6(                         (short)(App.QUADRO_WIDTH-116),(short)(App.QUADRO_HEIGHT-188),(short)50,(short)30                            ));//feito
+        painel.add(botoesPadrao.Botao7(                         (short)(App.QUADRO_WIDTH-228),(short)(App.QUADRO_HEIGHT-224),(short)50,(short)30                           ));//feito
+        painel.add(botoesPadrao.Botao8(                         (short)(App.QUADRO_WIDTH-172),(short)(App.QUADRO_HEIGHT-224),(short)50,(short)30                           ));//feito
+        painel.add(botoesPadrao.Botao9(                         (short)(App.QUADRO_WIDTH-116),(short)(App.QUADRO_HEIGHT-224),(short)50,(short)30                           ));//feito
+        painel.add(botoesPadrao.BotaoIgual(                     (short)(App.QUADRO_WIDTH-60),(short)(App.QUADRO_HEIGHT-116),(short)50,(short)30                            ));//feito
+        painel.add(botoesPadrao.BotaoApagar(                    (short)(App.QUADRO_WIDTH-172),(short)(App.QUADRO_HEIGHT-384),(short)162,(short)30                            ));//feito
+        painel.add(botoesPadrao.BotaoApagarTudo(                (short)(App.QUADRO_WIDTH-340),(short)(App.QUADRO_HEIGHT-384),(short)162,(short)30                           ));//feito
+        painel.add(botoesPadrao.BotaoSubtracao(                 (short)(App.QUADRO_WIDTH-60),(short)(App.QUADRO_HEIGHT-188),(short)50,(short)30                            ));//feito
+        painel.add(botoesPadrao.BotaoSoma(                      (short)(App.QUADRO_WIDTH-60),(short)(App.QUADRO_HEIGHT-152),(short)50,(short)30                           ));//feito
+        painel.add(botoesPadrao.BotaoDivisao(                   (short)(App.QUADRO_WIDTH-60),(short)(App.QUADRO_HEIGHT-260),(short)50,(short)30                           ));//feito
+        painel.add(botoesPadrao.BotaoMultiplicacao(             (short)(App.QUADRO_WIDTH-60),(short)(App.QUADRO_HEIGHT-224),(short)50,(short)30                          ));//feito
+        painel.add(botoesPadrao.BotaoPorcentagem(               (short)(App.QUADRO_WIDTH-60),(short)(App.QUADRO_HEIGHT-332),(short)50,(short)30                           ));//feito
+        painel.add(botoesPadrao.BotaoSinal(                     (short)(App.QUADRO_WIDTH-228),(short)(App.QUADRO_HEIGHT-116),(short)50,(short)30                         ));//feito
+        painel.add(botoesPadrao.BotaoRaizQuadrada(              (short)(App.QUADRO_WIDTH-284),(short)(App.QUADRO_HEIGHT-260),(short)50,(short)30                          ));//feito
+        painel.add(botoesPadrao.BotaoElevadoPotenciaDois(       (short)(App.QUADRO_WIDTH-284),(short)(App.QUADRO_HEIGHT-296),(short)50,(short)30                          ));//feito
+        painel.add(botoesPadrao.BotaoUmSobreX(                  (short)(App.QUADRO_WIDTH-228),(short)(App.QUADRO_HEIGHT-296),(short)50,(short)30                          ));//feito
+        painel.add(botoesPadrao.BotaoVirgula(                   (short)(App.QUADRO_WIDTH-116),(short)(App.QUADRO_HEIGHT-116),(short)50,(short)30                         ));//feito
+        painel.add(botoesCientifico.BotaoPi(                    (short)(App.QUADRO_WIDTH-284),(short)(App.QUADRO_HEIGHT-80),(short)50,(short)30                          ));//feito
+        painel.add(botoesCientifico.BotaoEuler(                 (short)(App.QUADRO_WIDTH-340),(short)(App.QUADRO_HEIGHT-80),(short)50,(short)30                         ));//feito
+        painel.add(botoesCientifico.BotaoFatorial(              (short)(App.QUADRO_WIDTH-116),(short)(App.QUADRO_HEIGHT-260),(short)50,(short)30                        ));//feito
+        painel.add(botoesCientifico.BotaoAbrindoParenteses(     (short)(App.QUADRO_WIDTH-228),(short)(App.QUADRO_HEIGHT-260),(short)50,(short)30                        ));//feito
+        painel.add(botoesCientifico.BotaoFechandoParenteses(    (short)(App.QUADRO_WIDTH-172),(short)(App.QUADRO_HEIGHT-260),(short)50,(short)30                        ));//feito
+        painel.add(botoesCientifico.BotaoEXP(                   (short)(App.QUADRO_WIDTH-116),(short)(App.QUADRO_HEIGHT-296),(short)50,(short)30                        ));//feito
+        painel.add(botoesCientifico.BotaoModulo(                (short)(App.QUADRO_WIDTH-172),(short)(App.QUADRO_HEIGHT-296),(short)50,(short)30                         ));//feito
+        painel.add(botoesCientifico.BotaoResto(                 (short)(App.QUADRO_WIDTH-60),(short)(App.QUADRO_HEIGHT-296),(short)50,(short)30                           ));//feito
+        painel.add(botoesCientifico.BotaoXElevadoPotenciaY(     (short)(App.QUADRO_WIDTH-284),(short)(App.QUADRO_HEIGHT-224),(short)50,(short)30                            ));//feito
+        painel.add(botoesCientifico.BotaoDezElevadoPotenciaX(   (short)(App.QUADRO_WIDTH-284),(short)(App.QUADRO_HEIGHT-188),(short)50,(short)30                            ));//feito
+        painel.add(botoesCientifico.BotaoLogaritmo(             (short)(App.QUADRO_WIDTH-284),(short)(App.QUADRO_HEIGHT-152),(short)50,(short)30                          ));//feito
+        painel.add(botoesCientifico.BotaoLogaritmoNatural(      (short)(App.QUADRO_WIDTH-284),(short)(App.QUADRO_HEIGHT-116),(short)50,(short)30                        ));//feito
+        painel.add(botoesCientifico.BotaoXElevadoPotencia3(     (short)(App.QUADRO_WIDTH-340),(short)(App.QUADRO_HEIGHT-296),(short)50,(short)30                         ));//feito
+        painel.add(botoesCientifico.BotaoRaizCubicaX(           (short)(App.QUADRO_WIDTH-340),(short)(App.QUADRO_HEIGHT-260),(short)50,(short)30                        ));//feito
+        painel.add(botoesCientifico.BotaoRaizYX(                (short)(App.QUADRO_WIDTH-340),(short)(App.QUADRO_HEIGHT-224),(short)50,(short)30                         ));//feito
+        painel.add(botoesCientifico.BotaoDoisElevadoPotenciaX(  (short)(App.QUADRO_WIDTH-340),(short)(App.QUADRO_HEIGHT-188),(short)50,(short)30                        ));//feito
+        painel.add(botoesCientifico.BotaoLogYBaseX(             (short)(App.QUADRO_WIDTH-340),(short)(App.QUADRO_HEIGHT-152),(short)50,(short)30                       ));//feito
+        painel.add(botoesCientifico.BotaoEElevadoPotenciaX(     (short)(App.QUADRO_WIDTH-340),(short)(App.QUADRO_HEIGHT-116),(short)50,(short)30                       ));//feito
+        painel.add(botoesExtra.BotaoGradiente(                  (short)(App.QUADRO_WIDTH-228),(short)(App.QUADRO_HEIGHT-332),(short)50,(short)30                       ));//feito
+        painel.add(botoesExtra.BotaoDelta(                      (short)(App.QUADRO_WIDTH-172),(short)(App.QUADRO_HEIGHT-332),(short)50,(short)30                       ));//feito
+        painel.add(botoesExtra.BotaoArco(                       (short)(App.QUADRO_WIDTH-340),(short)(App.QUADRO_HEIGHT-332),(short)106,(short)30                       ));//feito
+        painel.add(botoesExtra.BotaoSigma(                      (short)(App.QUADRO_WIDTH-116),(short)(App.QUADRO_HEIGHT-332),(short)50,(short)30                       ));//feito
+        painel.add(botoesExtra.BotaoModoEscuroELuz(             (short)(122), (short)(App.QUADRO_HEIGHT-80),(short)(App.QUADRO_WIDTH-132), (short)30             ));//feito
     }
 }

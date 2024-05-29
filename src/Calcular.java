@@ -1,4 +1,4 @@
-// TODO:
+// todo:
 // O usuario pode escrever em cima do Resultado (usar booleanos de resultados para consertar?)
 // Numeros inteiros devem ser truncados para integers (numeros terminados com .0)
 // Este codigo talvez nao seja suficiente para calculos mais complexos (integral, etc)
@@ -11,7 +11,7 @@ public class Calcular {
 
         // Checa se o input esta vazio ou e invalido
         if (input.isEmpty() || !eInputValido(input)) {
-            App.areaTexto.setText("Invalid Input");
+            App.areaTexto.setText("Entrada Inválida");
             return;
         }
 
@@ -23,7 +23,7 @@ public class Calcular {
             App.textoInserido = String.valueOf(App.formatoDecimal.format(resultado));
             App.areaTexto.setText(App.textoInserido);
         } catch (Exception e) {
-            App.areaTexto.setText("Error");
+            App.areaTexto.setText("Erro");
         }
     }
 
