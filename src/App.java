@@ -21,6 +21,7 @@ public class App{
     public static JFrame quadro = new JFrame("Calculadora"); //O quadro sendo gerado aqui
     public static ImageIcon icone;
     public static DecimalFormat formatoDecimal; //Usado para formartar os valores, neste caso será formatado os valores numéricos para o português brasileiro.
+    public static byte QuantidadeCasas = 14;
     public static String textoInserido = ""; //A variavel que irá armazenar o texto, que sera mostrada na area de texto
     public static Barra barra; //Anexando a variavel da classe Barra
     public static Tela1 tela1; //Anexando a variavel da classe Tela1
@@ -156,7 +157,7 @@ public class App{
         //Formatando a string
         DecimalFormatSymbols simbolos = new DecimalFormatSymbols(new Locale("pt", "BR")); //Definindo como português brasileiro.
         simbolos.setDecimalSeparator(',');
-        formatoDecimal = new DecimalFormat("#.######################################################################", simbolos);
+        formatoDecimal = new DecimalFormat("#.##############", simbolos);
 
         barra = new Barra(); //Instanciando a classe Barra, no qual irá desenhar todos os elementos da barra.
         tela1 = new Tela1(); //Instanciando a classe Tela1, no qual irá desenhar todos os outros elementos da tela e trazendo as sua outras funcionalidades.
@@ -187,7 +188,7 @@ public class App{
         tela1.botoesPadrao.botaoDivisao.setBackground(fundo); tela1.botoesPadrao.botaoDivisao.setForeground(fonte); tela1.botoesPadrao.botaoDivisao.setBorder(borda);
         tela1.botoesPadrao.botaoMultiplicacao.setBackground(fundo); tela1.botoesPadrao.botaoMultiplicacao.setForeground(fonte); tela1.botoesPadrao.botaoMultiplicacao.setBorder(borda);
         tela1.botoesPadrao.botaoPorcentagem.setBackground(fundo); tela1.botoesPadrao.botaoPorcentagem.setForeground(fonte); tela1.botoesPadrao.botaoPorcentagem.setBorder(borda);
-        tela1.botoesPadrao.botaoSinal.setBackground(fundo); tela1.botoesPadrao.botaoSinal.setForeground(fonte); tela1.botoesPadrao.botaoSinal.setBorder(borda);
+        tela1.botoesPadrao.botaoCasas.setBackground(fundo); tela1.botoesPadrao.botaoCasas.setForeground(fonte); tela1.botoesPadrao.botaoCasas.setBorder(borda);
         tela1.botoesPadrao.botaoRaizQuadrada.setBackground(fundo); tela1.botoesPadrao.botaoRaizQuadrada.setForeground(fonte); tela1.botoesPadrao.botaoRaizQuadrada.setBorder(borda);
         tela1.botoesPadrao.botaoElevadoPotenciaDois.setBackground(fundo); tela1.botoesPadrao.botaoElevadoPotenciaDois.setForeground(fonte); tela1.botoesPadrao.botaoElevadoPotenciaDois.setBorder(borda);
         tela1.botoesPadrao.botaoUmSobreX.setBackground(fundo); tela1.botoesPadrao.botaoUmSobreX.setForeground(fonte); tela1.botoesPadrao.botaoUmSobreX.setBorder(borda);
@@ -210,10 +211,11 @@ public class App{
         tela1.botoesCientifico.botaoDoisElevadoPotenciaX.setBackground(fundo); tela1.botoesCientifico.botaoDoisElevadoPotenciaX.setForeground(fonte); tela1.botoesCientifico.botaoDoisElevadoPotenciaX.setBorder(borda);
         tela1.botoesCientifico.botaoLogYBaseX.setBackground(fundo); tela1.botoesCientifico.botaoLogYBaseX.setForeground(fonte); tela1.botoesCientifico.botaoLogYBaseX.setBorder(borda);
         tela1.botoesCientifico.botaoEElevadoPotenciaX.setBackground(fundo); tela1.botoesCientifico.botaoEElevadoPotenciaX.setForeground(fonte); tela1.botoesCientifico.botaoEElevadoPotenciaX.setBorder(borda);
-        tela1.botoesExtra.botaoGradiente.setBackground(fundo); tela1.botoesExtra.botaoGradiente.setForeground(fonte); tela1.botoesExtra.botaoGradiente.setBorder(borda);
-        tela1.botoesExtra.botaoDelta.setBackground(fundo); tela1.botoesExtra.botaoDelta.setForeground(fonte); tela1.botoesExtra.botaoDelta.setBorder(borda);
-        tela1.botoesExtra.botaoArco.setBackground(fundo); tela1.botoesExtra.botaoArco.setForeground(fonte); tela1.botoesExtra.botaoArco.setBorder(borda);
-        tela1.botoesExtra.botaoSigma.setBackground(fundo); tela1.botoesExtra.botaoSigma.setForeground(fonte); tela1.botoesExtra.botaoSigma.setBorder(borda);
+        tela1.botoesExtra.botaoEM.setBackground(fundo); tela1.botoesExtra.botaoEM.setForeground(fonte); tela1.botoesExtra.botaoEM.setBorder(borda);
+        tela1.botoesExtra.botaoF.setBackground(fundo); tela1.botoesExtra.botaoF.setForeground(fonte); tela1.botoesExtra.botaoF.setBorder(borda);
+        tela1.botoesExtra.botaoR.setBackground(fundo); tela1.botoesExtra.botaoR.setForeground(fonte); tela1.botoesExtra.botaoR.setBorder(borda);
+        tela1.botoesExtra.botaoA.setBackground(fundo); tela1.botoesExtra.botaoA.setForeground(fonte); tela1.botoesExtra.botaoA.setBorder(borda);
+        tela1.botoesExtra.botaoP.setBackground(fundo); tela1.botoesExtra.botaoP.setForeground(fonte); tela1.botoesExtra.botaoP.setBorder(borda);
         tela1.botoesExtra.botaoModoEscuroELuz.setBackground(fundo); tela1.botoesExtra.botaoModoEscuroELuz.setForeground(fonte); tela1.botoesExtra.botaoModoEscuroELuz.setBorder(borda);
         barra.botaoMinimizar.setBackground(fundo); barra.botaoMinimizar.setForeground(fonteBarra); barra.botaoMinimizar.setBorder(borda);
         barra.botaoFechar.setBackground(fundoFechar); barra.botaoFechar.setForeground(fonteBarra); barra.botaoFechar.setBorder(borda);

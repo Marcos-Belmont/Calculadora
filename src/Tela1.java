@@ -67,7 +67,7 @@ public class Tela1 extends JFrame {
         painel.add(botoesPadrao.BotaoDivisao(                   (short)(App.QUADRO_WIDTH-60),(short)(App.QUADRO_HEIGHT-260),(short)50,(short)30                           ));//feito
         painel.add(botoesPadrao.BotaoMultiplicacao(             (short)(App.QUADRO_WIDTH-60),(short)(App.QUADRO_HEIGHT-224),(short)50,(short)30                          ));//feito
         painel.add(botoesPadrao.BotaoPorcentagem(               (short)(App.QUADRO_WIDTH-60),(short)(App.QUADRO_HEIGHT-332),(short)50,(short)30                           ));//feito
-        painel.add(botoesPadrao.BotaoSinal(                     (short)(App.QUADRO_WIDTH-228),(short)(App.QUADRO_HEIGHT-116),(short)50,(short)30                         ));//feito
+        painel.add(botoesPadrao.BotaoCasas(                     (short)(App.QUADRO_WIDTH-228),(short)(App.QUADRO_HEIGHT-116),(short)50,(short)30                         ));//feito
         painel.add(botoesPadrao.BotaoRaizQuadrada(              (short)(App.QUADRO_WIDTH-284),(short)(App.QUADRO_HEIGHT-260),(short)50,(short)30                          ));//feito
         painel.add(botoesPadrao.BotaoElevadoPotenciaDois(       (short)(App.QUADRO_WIDTH-284),(short)(App.QUADRO_HEIGHT-296),(short)50,(short)30                          ));//feito
         painel.add(botoesPadrao.BotaoUmSobreX(                  (short)(App.QUADRO_WIDTH-228),(short)(App.QUADRO_HEIGHT-296),(short)50,(short)30                          ));//feito
@@ -90,10 +90,11 @@ public class Tela1 extends JFrame {
         painel.add(botoesCientifico.BotaoDoisElevadoPotenciaX(  (short)(App.QUADRO_WIDTH-340),(short)(App.QUADRO_HEIGHT-188),(short)50,(short)30                        ));//feito
         painel.add(botoesCientifico.BotaoLogYBaseX(             (short)(App.QUADRO_WIDTH-340),(short)(App.QUADRO_HEIGHT-152),(short)50,(short)30                       ));//feito
         painel.add(botoesCientifico.BotaoEElevadoPotenciaX(     (short)(App.QUADRO_WIDTH-340),(short)(App.QUADRO_HEIGHT-116),(short)50,(short)30                       ));//feito
-        painel.add(botoesExtra.BotaoGradiente(                  (short)(App.QUADRO_WIDTH-228),(short)(App.QUADRO_HEIGHT-332),(short)50,(short)30                       ));//feito
-        painel.add(botoesExtra.BotaoDelta(                      (short)(App.QUADRO_WIDTH-172),(short)(App.QUADRO_HEIGHT-332),(short)50,(short)30                       ));//feito
-        painel.add(botoesExtra.BotaoArco(                       (short)(App.QUADRO_WIDTH-340),(short)(App.QUADRO_HEIGHT-332),(short)106,(short)30                       ));//feito
-        painel.add(botoesExtra.BotaoSigma(                      (short)(App.QUADRO_WIDTH-116),(short)(App.QUADRO_HEIGHT-332),(short)50,(short)30                       ));//feito
+        painel.add(botoesExtra.BotaoEM(                  (short)(App.QUADRO_WIDTH-340),(short)(App.QUADRO_HEIGHT-332),(short)50,(short)30                       ));//feito
+        painel.add(botoesExtra.BotaoF(                      (short)(App.QUADRO_WIDTH-172),(short)(App.QUADRO_HEIGHT-332),(short)50,(short)30                       ));//feito
+        painel.add(botoesExtra.BotaoR(                       (short)(App.QUADRO_WIDTH-228),(short)(App.QUADRO_HEIGHT-332),(short)50,(short)30                       ));//feito
+        painel.add(botoesExtra.BotaoA(                      (short)(App.QUADRO_WIDTH-116),(short)(App.QUADRO_HEIGHT-332),(short)50,(short)30                       ));//feito
+        painel.add(botoesExtra.BotaoP(                       (short)(App.QUADRO_WIDTH-284),(short)(App.QUADRO_HEIGHT-332),(short)50,(short)30                       ));//feito
         painel.add(botoesExtra.BotaoModoEscuroELuz(             (short)(122), (short)(App.QUADRO_HEIGHT-80),(short)(App.QUADRO_WIDTH-132), (short)30             ));//feito
     }
 }

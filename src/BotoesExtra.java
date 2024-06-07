@@ -4,90 +4,132 @@ import javax.swing.*;
 
 public class BotoesExtra {
 
-    public JButton botaoGradiente, botaoArco, botaoDelta, botaoSigma, botaoModoEscuroELuz; //botoes que serao aplicados.
+    public JButton botaoEM, botaoR, botaoF, botaoA, botaoP, botaoModoEscuroELuz; //botoes que serao aplicados.
 
-    public JButton BotaoGradiente(short x, short y, short width, short height){
-        botaoGradiente = new JButton();
-        botaoGradiente.setFont(new Font("Look and Feel", 1, 24));
-        botaoGradiente.setForeground(new Color(0, 0, 102));
-        botaoGradiente.setText("∇");
-        botaoGradiente.setBorder(BorderFactory.createLineBorder(new Color(24, 96, 163), 3));
-        botaoGradiente.setRequestFocusEnabled(false);
-        botaoGradiente.setFocusable(false);
-        //botaoGradiente.setRolloverEnabled(true);
-        //botaoGradiente.setMargin(new Insets(2, 1000, 2, 14));
-        botaoGradiente.setBackground(new Color(59, 125, 187));
-        botaoGradiente.setBounds(x, y,width, height);
+    //Euler-Mascheroni (γ) 0.57721566490153
+    //Constante de Feigenbaum (δ) 4.66920160910299
+    //Constante de Ramanujan-Soldner (μ) 0.37250741078136
+    //Constante de Apéry (G) 0.91596559417721
+    //constante de phi (φ) 1.61803398874989
 
-        botaoGradiente.addActionListener((ActionEvent e) -> {
-                App.textoInserido += "∇";
+    public JButton BotaoEM(short x, short y, short width, short height){
+        botaoEM = new JButton();
+        botaoEM.setFont(new Font("Look and Feel", 1, 18));
+        botaoEM.setForeground(new Color(0, 0, 102));
+        botaoEM.setText("γ");
+        botaoEM.setBorder(BorderFactory.createLineBorder(new Color(24, 96, 163), 3));
+        botaoEM.setRequestFocusEnabled(false);
+        botaoEM.setFocusable(false);
+        //botaoEM.setRolloverEnabled(true);
+        //botaoEM.setMargin(new Insets(2, 1000, 2, 14));
+        botaoEM.setBackground(new Color(59, 125, 187));
+        botaoEM.setBounds(x, y,width, height);
+
+        botaoEM.addActionListener((ActionEvent e) -> {
+                for (byte i = 0; i < App.formatoDecimal.format(0.57721566490153).length(); i++) {
+                    Calcular.identicadoresArmazenados += App.formatoDecimal.format(0.57721566490153).substring(i,i+1)+"$";
+                }
+                App.textoInserido += App.formatoDecimal.format(0.57721566490153);
                 App.areaTexto.setText(App.textoInserido);
         });
 
-        return botaoGradiente;
+        return botaoEM;
     }
 
-    public JButton BotaoDelta(short x, short y, short width, short height){
-        botaoDelta = new JButton();
-        botaoDelta.setFont(new Font("Look and Feel", 1, 24));
-        botaoDelta.setForeground(new Color(0, 0, 102));
-        botaoDelta.setText("∆");
-        botaoDelta.setBorder(BorderFactory.createLineBorder(new Color(24, 96, 163), 3));
-        botaoDelta.setRequestFocusEnabled(false);
-        botaoDelta.setFocusable(false);
-        //botaoDelta.setRolloverEnabled(true);
-        //botaoDelta.setMargin(new Insets(2, 1000, 2, 14));
-        botaoDelta.setBackground(new Color(59, 125, 187));
-        botaoDelta.setBounds(x, y,width, height);
+    public JButton BotaoF(short x, short y, short width, short height){
+        botaoF = new JButton();
+        botaoF.setFont(new Font("Look and Feel", 1, 24));
+        botaoF.setForeground(new Color(0, 0, 102));
+        botaoF.setText("δ");
+        botaoF.setBorder(BorderFactory.createLineBorder(new Color(24, 96, 163), 3));
+        botaoF.setRequestFocusEnabled(false);
+        botaoF.setFocusable(false);
+        //botaoF.setRolloverEnabled(true);
+        //botaoF.setMargin(new Insets(2, 1000, 2, 14));
+        botaoF.setBackground(new Color(59, 125, 187));
+        botaoF.setBounds(x, y,width, height);
 
-        botaoDelta.addActionListener((ActionEvent e) -> {
-                App.textoInserido += "∆";
+        botaoF.addActionListener((ActionEvent e) -> {
+                for (byte i = 0; i < App.formatoDecimal.format(4.66920160910299).length(); i++) {
+                    Calcular.identicadoresArmazenados += App.formatoDecimal.format(4.66920160910299).substring(i,i+1)+"$";
+                }
+                App.textoInserido += App.formatoDecimal.format(4.66920160910299);
                 App.areaTexto.setText(App.textoInserido);
         });
 
-        return botaoDelta;
+        return botaoF;
     }
 
-    public JButton BotaoArco(short x, short y, short width, short height){
-        botaoArco = new JButton();
-        botaoArco.setFont(new Font("Look and Feel", 1, 24));
-        botaoArco.setForeground(new Color(0, 0, 102));
-        botaoArco.setText("Arco");
-        botaoArco.setBorder(BorderFactory.createLineBorder(new Color(24, 96, 163), 3));
-        botaoArco.setRequestFocusEnabled(false);
-        botaoArco.setFocusable(false);
-        //botaoArco.setRolloverEnabled(true);
-        //botaoArco.setMargin(new Insets(2, 1000, 2, 14));
-        botaoArco.setBackground(new Color(59, 125, 187));
-        botaoArco.setBounds(x, y,width, height);
+    public JButton BotaoR(short x, short y, short width, short height){
+        botaoR = new JButton();
+        botaoR.setFont(new Font("Look and Feel", 1, 20));
+        botaoR.setForeground(new Color(0, 0, 102));
+        botaoR.setText("μ");
+        botaoR.setBorder(BorderFactory.createLineBorder(new Color(24, 96, 163), 3));
+        botaoR.setRequestFocusEnabled(false);
+        botaoR.setFocusable(false);
+        //botaoR.setRolloverEnabled(true);
+        //botaoR.setMargin(new Insets(2, 1000, 2, 14));
+        botaoR.setBackground(new Color(59, 125, 187));
+        botaoR.setBounds(x, y,width, height);
 
-        botaoArco.addActionListener((ActionEvent e) -> {
-                App.textoInserido += "Arco";
+        botaoR.addActionListener((ActionEvent e) -> {
+                for (byte i = 0; i < App.formatoDecimal.format(0.37250741078136).length(); i++) {
+                    Calcular.identicadoresArmazenados += App.formatoDecimal.format(0.37250741078136).substring(i,i+1)+"$";
+                }
+                App.textoInserido += App.formatoDecimal.format(0.37250741078136);
                 App.areaTexto.setText(App.textoInserido);
         });
 
-        return botaoArco;
+        return botaoR;
     }
 
-    public JButton BotaoSigma(short x, short y, short width, short height){
-        botaoSigma = new JButton();
-        botaoSigma.setFont(new Font("Look and Feel", 1, 24));
-        botaoSigma.setForeground(new Color(0, 0, 102));
-        botaoSigma.setText("Σ");
-        botaoSigma.setBorder(BorderFactory.createLineBorder(new Color(24, 96, 163), 3));
-        botaoSigma.setRequestFocusEnabled(false);
-        botaoSigma.setFocusable(false);
-        //botaoSigma.setRolloverEnabled(true);
-        //botaoSigma.setMargin(new Insets(2, 1000, 2, 14));
-        botaoSigma.setBackground(new Color(59, 125, 187));
-        botaoSigma.setBounds(x, y,width, height);
+    public JButton BotaoA(short x, short y, short width, short height){
+        botaoA = new JButton();
+        botaoA.setFont(new Font("Look and Feel", 1, 24));
+        botaoA.setForeground(new Color(0, 0, 102));
+        botaoA.setText("G");
+        botaoA.setBorder(BorderFactory.createLineBorder(new Color(24, 96, 163), 3));
+        botaoA.setRequestFocusEnabled(false);
+        botaoA.setFocusable(false);
+        //botaoA.setRolloverEnabled(true);
+        //botaoA.setMargin(new Insets(2, 1000, 2, 14));
+        botaoA.setBackground(new Color(59, 125, 187));
+        botaoA.setBounds(x, y,width, height);
 
-        botaoSigma.addActionListener((ActionEvent e) -> {
-                App.textoInserido += "Σ";
+        botaoA.addActionListener((ActionEvent e) -> {
+                for (byte i = 0; i < App.formatoDecimal.format(0.91596559417721).length(); i++) {
+                    Calcular.identicadoresArmazenados += App.formatoDecimal.format(0.91596559417721).substring(i,i+1)+"$";
+                }
+                App.textoInserido += App.formatoDecimal.format(0.91596559417721);
                 App.areaTexto.setText(App.textoInserido);
         });
 
-        return botaoSigma;
+        return botaoA;
+    }
+
+    public JButton BotaoP(short x, short y, short width, short height){
+        botaoP = new JButton();
+        botaoP.setFont(new Font("Look and Feel", 1, 20));
+        botaoP.setForeground(new Color(0, 0, 102));
+        botaoP.setText("φ");
+        botaoP.setBorder(BorderFactory.createLineBorder(new Color(24, 96, 163), 3));
+        botaoP.setRequestFocusEnabled(false);
+        botaoP.setFocusable(false);
+        //botaoP.setRolloverEnabled(true);
+        //botaoP.setMargin(new Insets(2, 1000, 2, 14));
+        botaoP.setBackground(new Color(59, 125, 187));
+        botaoP.setBounds(x, y,width, height);
+
+        botaoP.addActionListener((ActionEvent e) -> {
+                for (byte i = 0; i < App.formatoDecimal.format(1.61803398874989).length(); i++) {
+                    Calcular.identicadoresArmazenados += App.formatoDecimal.format(1.61803398874989).substring(i,i+1)+"$";
+                }
+                App.textoInserido += App.formatoDecimal.format(1.61803398874989);
+                App.areaTexto.setText(App.textoInserido);
+        });
+
+        return botaoP;
     }
 
     public JButton BotaoModoEscuroELuz(short x, short y, short width, short height){

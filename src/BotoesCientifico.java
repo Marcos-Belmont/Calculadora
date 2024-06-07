@@ -21,6 +21,9 @@ public class BotoesCientifico {
         botaoPi.setBounds(x, y,width, height);
 
         botaoPi.addActionListener((ActionEvent e) -> {
+                for (byte i = 0; i < App.formatoDecimal.format(Math.PI).length(); i++) {
+                    Calcular.identicadoresArmazenados += App.formatoDecimal.format(Math.PI).substring(i,i+1)+"$";
+                }
                 App.textoInserido += App.formatoDecimal.format(Math.PI);
                 App.areaTexto.setText(App.textoInserido);
         });
@@ -42,6 +45,9 @@ public class BotoesCientifico {
         botaoEuler.setBounds(x, y,width, height);
 
         botaoEuler.addActionListener((ActionEvent e) -> {
+                for (byte i = 0; i < App.formatoDecimal.format(Math.PI).length(); i++) {
+                    Calcular.identicadoresArmazenados += App.formatoDecimal.format(Math.E).substring(i,i+1)+"$";
+                }
                 App.textoInserido += App.formatoDecimal.format(Math.E);
                 App.areaTexto.setText(App.textoInserido);
         });
@@ -84,6 +90,7 @@ public class BotoesCientifico {
         botaoAbrindoParenteses.setBounds(x, y,width, height);
 
         botaoAbrindoParenteses.addActionListener((ActionEvent e) -> {
+                Calcular.identicadoresArmazenados += "($";
                 App.textoInserido += "(";
                 App.areaTexto.setText(App.textoInserido);
         });
@@ -105,6 +112,7 @@ public class BotoesCientifico {
         botaoFechandoParenteses.setBounds(x, y,width, height);
 
         botaoFechandoParenteses.addActionListener((ActionEvent e) -> {
+                Calcular.identicadoresArmazenados += ")$";
                 App.textoInserido += ")";
                 App.areaTexto.setText(App.textoInserido);
         });
@@ -378,7 +386,11 @@ public class BotoesCientifico {
         botaoEElevadoPotenciaX.setBounds(x, y,width, height);
 
         botaoEElevadoPotenciaX.addActionListener((ActionEvent e) -> {
-                App.textoInserido += "e^x";
+                for (byte i = 0; i < App.formatoDecimal.format(Math.PI).length(); i++) {
+                    Calcular.identicadoresArmazenados += App.formatoDecimal.format(Math.E).substring(i,i+1)+"$";
+                }
+                Calcular.identicadoresArmazenados += "^$";
+                App.textoInserido += App.formatoDecimal.format(Math.E)+"^";
                 App.areaTexto.setText(App.textoInserido);
         });
 
