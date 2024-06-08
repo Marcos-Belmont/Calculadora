@@ -390,6 +390,7 @@ public class BotoesPadrao {
         botaoPorcentagem.setBounds(x, y,width, height);
 
         botaoPorcentagem.addActionListener((ActionEvent e) -> {
+            Calcular.identicadoresArmazenados += "%$";
             App.textoInserido += "%";
             App.areaTexto.setText(App.textoInserido);
         });
@@ -401,12 +402,12 @@ public class BotoesPadrao {
         botaoCasas = new JButton();
         botaoCasas.setFont(new Font("Look and Feel", 1, 16));
         botaoCasas.setForeground(new Color(0, 0, 102));
-        botaoCasas.setText("14/14");
+        botaoCasas.setText("14I14");
         botaoCasas.setBorder(BorderFactory.createLineBorder(new Color(24, 96, 163), 3));
         botaoCasas.setRequestFocusEnabled(false);
         botaoCasas.setFocusable(false);
-        //botaoSinal.setRolloverEnabled(true);
-        //botaoSinal.setMargin(new Insets(2, 1000, 2, 14));
+        //botaoCasas.setRolloverEnabled(true);
+        //botaoCasas.setMargin(new Insets(2, 1000, 2, 14));
         botaoCasas.setBackground(new Color(59, 125, 187));
         botaoCasas.setBounds(x, y,width, height);
 
@@ -431,7 +432,11 @@ public class BotoesPadrao {
                 App.formatoDecimal = new DecimalFormat("#."+casas, simbolos);
             }
 
-            botaoCasas.setText(App.QuantidadeCasas+"/14");
+            if (App.QuantidadeCasas < 10) {
+                botaoCasas.setText("0"+App.QuantidadeCasas+"I14");
+            }else{
+                botaoCasas.setText(App.QuantidadeCasas+"I14");
+            }
 
         });
 
@@ -452,7 +457,8 @@ public class BotoesPadrao {
         botaoRaizQuadrada.setBounds(x, y,width, height);
 
         botaoRaizQuadrada.addActionListener((ActionEvent e) -> {
-            App.textoInserido += "²√x";
+            Calcular.identicadoresArmazenados += "2$√$";
+            App.textoInserido += "2√";
             App.areaTexto.setText(App.textoInserido);
         });
 
@@ -473,7 +479,8 @@ public class BotoesPadrao {
         botaoElevadoPotenciaDois.setBounds(x, y,width, height);
 
         botaoElevadoPotenciaDois.addActionListener((ActionEvent e) -> {
-            App.textoInserido += "x²";
+            Calcular.identicadoresArmazenados += "^$($2$)$";
+            App.textoInserido += "^(2)";
             App.areaTexto.setText(App.textoInserido);
         });
 
@@ -494,7 +501,8 @@ public class BotoesPadrao {
         botaoUmSobreX.setBounds(x, y,width, height);
 
         botaoUmSobreX.addActionListener((ActionEvent e) -> {
-            App.textoInserido += "1/x";
+            Calcular.identicadoresArmazenados += "1$/$";
+            App.textoInserido += "1÷";
             App.areaTexto.setText(App.textoInserido);
         });
 

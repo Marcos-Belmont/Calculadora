@@ -12,17 +12,21 @@ import java.util.Arrays;
 
 public class Calcular {
 
+    private static final BigDecimal MENOS_UM = new BigDecimal(-1);
+    private static final BigDecimal CEM = new BigDecimal(100);
+    private static final BigDecimal ZERO = new BigDecimal(0);
+    private static final BigDecimal UM = new BigDecimal(1);
+
     public static String identicadoresArmazenados = ""; //Strign para armazenar os ID
 
     public static void Resultado() {
 
-        BigDecimal invert = new BigDecimal(-1);
         BigDecimal resultado = new BigDecimal(0);//Deixa o resultado padrão como 0
 
         System.out.println("ID: " + identicadoresArmazenados);
 
         //Você vai colocar estes recebimento em cada botão, adaptando como for necessário
-        //O calculo é este 2.1+((27/3)*2)+3*5]
+        //O calculo é este 2.1+((27/3)-4*2)+3*5]
         /*
         identicadoresArmazenados += "2$";
         identicadoresArmazenados += ",$";
@@ -100,15 +104,39 @@ public class Calcular {
                             prioridade--;
                             contador++;
                             break;
-                        case "*":
+                        case "√": //Raiz
+                            multiplicacaoDivisao[contagemMD] = contador+1;
+                            simbolo[contagemMD] = "√";
+                            contagemMD++;
+                            contador++;
+                            break;
+                        case "^": //Potência
+                            multiplicacaoDivisao[contagemMD] = contador+1;
+                            simbolo[contagemMD] = "^";
+                            contagemMD++;
+                            contador++;
+                            break;
+                        case "*": //Multiplicacao
                             multiplicacaoDivisao[contagemMD] = contador+1;
                             simbolo[contagemMD] = "*";
                             contagemMD++;
                             contador++;
                             break;
-                        case "/":
+                        case "/": //Divisao
                             multiplicacaoDivisao[contagemMD] = contador+1;
                             simbolo[contagemMD] = "/";
+                            contagemMD++;
+                            contador++;
+                            break;
+                        case "\\": //Resto
+                            multiplicacaoDivisao[contagemMD] = contador+1;
+                            simbolo[contagemMD] = "\\";
+                            contagemMD++;
+                            contador++;
+                            break;
+                        case "%": //Porcentagem
+                            multiplicacaoDivisao[contagemMD] = contador+1;
+                            simbolo[contagemMD] = "%";
                             contagemMD++;
                             contador++;
                             break;
@@ -217,7 +245,7 @@ public class Calcular {
     
                                         valores[multiplicacaoDivisao[count]+seguirDireita] = (sinalDireita == true ? valores[multiplicacaoDivisao[count]+seguirDireita] :
                                         (valores[multiplicacaoDivisao[count]+seguirDireita].substring(0,1).equals("-") ?
-                                        valores[multiplicacaoDivisao[count]+seguirDireita].substring(0,valores[multiplicacaoDivisao[count]+seguirDireita].length()) 
+                                        valores[multiplicacaoDivisao[count]+seguirDireita].substring(1,valores[multiplicacaoDivisao[count]+seguirDireita].length()) 
                                         : "-" + valores[multiplicacaoDivisao[count]+seguirDireita]));
     
                                         valorDireita = new BigDecimal(valores[multiplicacaoDivisao[count]+seguirDireita]);
@@ -250,11 +278,12 @@ public class Calcular {
     
                                         valores[multiplicacaoDivisao[count]+seguirEsquerda] = 
                                             (valores[multiplicacaoDivisao[count]+seguirEsquerda].substring(0,1).equals("-") ?
-                                            valores[multiplicacaoDivisao[count]+seguirEsquerda] : "-" + valores[multiplicacaoDivisao[count]+seguirEsquerda]);
+                                            valores[multiplicacaoDivisao[count]+seguirEsquerda].substring(1, valores[multiplicacaoDivisao[count]+seguirEsquerda].length()) 
+                                            : "-" + valores[multiplicacaoDivisao[count]+seguirEsquerda]);
     
                                         valores[multiplicacaoDivisao[count]+seguirEsquerda] = "";
     
-                                        valorEsquerda = valorEsquerda.multiply(invert);
+                                        valorEsquerda = valorEsquerda.multiply(MENOS_UM);
     
                                         esquerda = true; 
                                     }
@@ -285,13 +314,34 @@ public class Calcular {
                             //Fazendo o calculo da multplicao e divisao
                             System.out.println("Esquerda: "+valorEsquerda+" || Direita: "+valorDireita);
                             switch (simbolo[count]) {
+                                case "√":
+                                    valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf(Math.pow(valorDireita.doubleValue(), 1/valorEsquerda.doubleValue()));
+                                
+                                    //valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf((valorEsquerda.multiply(valorDireita)));
+                                    System.out.println("Valor: "+valores[multiplicacaoDivisao[count]+seguirEsquerda]);
+                                    break;
+                                case "^":
+                                    valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf(Math.pow(valorEsquerda.doubleValue(), valorDireita.doubleValue()));
+                                    
+                                    //valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf((valorEsquerda.multiply(valorDireita)));
+                                    System.out.println("Valor: "+valores[multiplicacaoDivisao[count]+seguirEsquerda]);
+                                    break;
                                 case "*":
                                     valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf((valorEsquerda.multiply(valorDireita)));
                                     System.out.println("Valor: "+valores[multiplicacaoDivisao[count]+seguirEsquerda]);
                                     break;
                                 case "/":
                                     valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf((valorEsquerda.divide(valorDireita)));
+                                    System.out.println("Valor: "+valores[multiplicacaoDivisao[count]+seguirEsquerda]);
                                     break;
+                                case "\\":
+                                    valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf((valorEsquerda.remainder(valorDireita)));
+                                    System.out.println("Valor: "+valores[multiplicacaoDivisao[count]+seguirEsquerda]);
+                                    break;
+                                case "%":
+                                    valorEsquerda = valorEsquerda.divide(CEM);
+                                    valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf(valorEsquerda.multiply(valorDireita));
+                                break;
                             }
 
                             //Serve para computar que esse valor não existe mais para analise
@@ -310,14 +360,16 @@ public class Calcular {
 
                         if(valores[count].equals("-")){
 
-                            if (sinalNegativo == true) 
+                            /*if (sinalNegativo == true) 
                             {
                                 sinalNegativo = false;
                             }else{
                                 sinalNegativo = true;
-                            }
+                            }*/
+
+                            sinalNegativo = sinalNegativo != true;
                             
-                            resultado = resultado.multiply(invert);
+                            resultado = resultado.multiply(MENOS_UM);
                             valores[count]="";
                         }
                         else if (valores[count].equals("+")) {

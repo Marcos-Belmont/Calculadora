@@ -134,7 +134,8 @@ public class BotoesCientifico {
         botaoEXP.setBounds(x, y,width, height);
 
         botaoEXP.addActionListener((ActionEvent e) -> {
-                App.textoInserido += "exp";
+                Calcular.identicadoresArmazenados += "^$($";
+                App.textoInserido += "^(";
                 App.areaTexto.setText(App.textoInserido);
         });
 
@@ -164,9 +165,9 @@ public class BotoesCientifico {
 
     public JButton BotaoResto(short x, short y, short width, short height){
         botaoResto = new JButton();
-        botaoResto.setFont(new Font("Look and Feel", 1, 17));
+        botaoResto.setFont(new Font("Look and Feel", 1, 18));
         botaoResto.setForeground(new Color(0, 0, 102));
-        botaoResto.setText("mod");
+        botaoResto.setText("rest ");
         botaoResto.setBorder(BorderFactory.createLineBorder(new Color(24, 96, 163), 3));
         botaoResto.setRequestFocusEnabled(false);
         botaoResto.setFocusable(false);
@@ -176,7 +177,8 @@ public class BotoesCientifico {
         botaoResto.setBounds(x, y,width, height);
 
         botaoResto.addActionListener((ActionEvent e) -> {
-                App.textoInserido += "mod";
+                Calcular.identicadoresArmazenados += "\\$";
+                App.textoInserido += "\\";
                 App.areaTexto.setText(App.textoInserido);
         });
 
@@ -197,7 +199,8 @@ public class BotoesCientifico {
         botaoXElevadoPotenciaY.setBounds(x, y,width, height);
 
         botaoXElevadoPotenciaY.addActionListener((ActionEvent e) -> {
-                App.textoInserido += "x^y";
+                Calcular.identicadoresArmazenados += "^$($";
+                App.textoInserido += "^(";
                 App.areaTexto.setText(App.textoInserido);
         });
 
@@ -218,7 +221,8 @@ public class BotoesCientifico {
         botaoDezElevadoPotenciaX.setBounds(x, y,width, height);
 
         botaoDezElevadoPotenciaX.addActionListener((ActionEvent e) -> {
-                App.textoInserido += "10^x";
+                Calcular.identicadoresArmazenados += "1$0$^$($";
+                App.textoInserido += "10^(";
                 App.areaTexto.setText(App.textoInserido);
         });
 
@@ -281,7 +285,8 @@ public class BotoesCientifico {
         botaoXElevadoPotencia3.setBounds(x, y,width, height);
 
         botaoXElevadoPotencia3.addActionListener((ActionEvent e) -> {
-                App.textoInserido += "x³";
+                Calcular.identicadoresArmazenados += "^$($3$)$";
+                App.textoInserido += "^(3)";
                 App.areaTexto.setText(App.textoInserido);
         });
 
@@ -302,7 +307,8 @@ public class BotoesCientifico {
         botaoRaizCubicaX.setBounds(x, y,width, height);
 
         botaoRaizCubicaX.addActionListener((ActionEvent e) -> {
-                App.textoInserido += "³√x";
+                Calcular.identicadoresArmazenados += "3$√$";
+                App.textoInserido += "3√";
                 App.areaTexto.setText(App.textoInserido);
         });
 
@@ -323,7 +329,8 @@ public class BotoesCientifico {
         botaoRaizYX.setBounds(x, y,width, height);
 
         botaoRaizYX.addActionListener((ActionEvent e) -> {
-                App.textoInserido += "y√x";
+            Calcular.identicadoresArmazenados += "√$";
+                App.textoInserido += "√";
                 App.areaTexto.setText(App.textoInserido);
         });
 
@@ -344,7 +351,8 @@ public class BotoesCientifico {
         botaoDoisElevadoPotenciaX.setBounds(x, y,width, height);
 
         botaoDoisElevadoPotenciaX.addActionListener((ActionEvent e) -> {
-                App.textoInserido += "2^x";
+                Calcular.identicadoresArmazenados += "2$^$($";
+                App.textoInserido += "2^(";
                 App.areaTexto.setText(App.textoInserido);
         });
 
@@ -389,8 +397,8 @@ public class BotoesCientifico {
                 for (byte i = 0; i < App.formatoDecimal.format(Math.PI).length(); i++) {
                     Calcular.identicadoresArmazenados += App.formatoDecimal.format(Math.E).substring(i,i+1)+"$";
                 }
-                Calcular.identicadoresArmazenados += "^$";
-                App.textoInserido += App.formatoDecimal.format(Math.E)+"^";
+                Calcular.identicadoresArmazenados += "^$($";
+                App.textoInserido += App.formatoDecimal.format(Math.E)+"^(";
                 App.areaTexto.setText(App.textoInserido);
         });
 
