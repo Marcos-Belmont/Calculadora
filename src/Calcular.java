@@ -12,6 +12,7 @@ import java.util.Arrays;
 
 public class Calcular {
 
+    private static final BigDecimal EULER = new BigDecimal(2.71d);
     private static final BigDecimal MENOS_UM = new BigDecimal(-1);
     private static final BigDecimal CEM = new BigDecimal(100);
     private static final BigDecimal ZERO = new BigDecimal(0);
@@ -25,31 +26,6 @@ public class Calcular {
 
         System.out.println("ID: " + identicadoresArmazenados);
 
-        //Você vai colocar estes recebimento em cada botão, adaptando como for necessário
-        //O calculo é este 2.1+((27/3)-4*2)+3*5]
-        /*
-        identicadoresArmazenados += "2$";
-        identicadoresArmazenados += ",$";
-        identicadoresArmazenados += "1$";
-        identicadoresArmazenados += "+$";
-        identicadoresArmazenados += "($";
-        identicadoresArmazenados += "($";
-        identicadoresArmazenados += "2$";
-        identicadoresArmazenados += "7$";
-        identicadoresArmazenados += "/$";
-        identicadoresArmazenados += "3$";
-        identicadoresArmazenados += ")$";
-        identicadoresArmazenados += "-$";
-        identicadoresArmazenados += "4$";
-        identicadoresArmazenados += "*$";
-        identicadoresArmazenados += "2$";
-        identicadoresArmazenados += ")$";
-        identicadoresArmazenados += "+$";
-        identicadoresArmazenados += "3$";
-        identicadoresArmazenados += "*$";
-        identicadoresArmazenados += "5$";
-        */
-
         //String responsável por separar os elementos em valores, exemplo: '2+15' vai ser valor0 = 2, valor1 = +, valor2 = 15
         String[] valores = new String[identicadoresArmazenados.length()];
         Arrays.fill(valores, ""); //Deixa todos os valores do array como vazio
@@ -57,8 +33,24 @@ public class Calcular {
         int contador = 0; //Responsável por fazer a contagem de valores
         int prioridade = 0, maximoPrioridade = 0; //Responsável por fazer a contagem de parenteses e pegar o seu valor máximo
 
-        int contagemMD = 0; //Responsável por contar os valores que multiplicam e dividem
-        int[] multiplicacaoDivisao = new int[identicadoresArmazenados.length()]; //Responsável por armazenar a posição valores da multiplicacao e divisao
+        int contagemFatorialModulo = 0; //Responsável por contar os valores fatoriais e de modulo
+        int[] fatorialModulo = new int[identicadoresArmazenados.length()]; //Responsável por armazenar a posição dos valores fatoriais e de modulo
+        Arrays.fill(fatorialModulo, 0); //Deixa todos os elementos do array como 0
+
+        int contagemLog = 0; //Responsável por contar os valores log
+        int[] log = new int[identicadoresArmazenados.length()]; //Responsável por armazenar a posição dos valores do log
+        Arrays.fill(log, 0); //Deixa todos os elementos do array como 0
+
+        int contagemPot = 0; //Responsável por contar os valores de potencia
+        int[] pot = new int[identicadoresArmazenados.length()]; //Responsável por armazenar a posição dos valores de potencia
+        Arrays.fill(pot, 0); //Deixa todos os elementos do array como 0
+
+        int contagemRaiz = 0; //Responsável por contar os valores raiz
+        int[] raiz = new int[identicadoresArmazenados.length()]; //Responsável por armazenar a posição dos valores raiz
+        Arrays.fill(raiz, 0); //Deixa todos os elementos do array como 0
+
+        int contagemMD = 0; //Responsável por contar os valores que multiplicam, dividem e derivados
+        int[] multiplicacaoDivisao = new int[identicadoresArmazenados.length()]; //Responsável por armazenar a posição dos valores da multiplicacao, divisao e derivados
         Arrays.fill(multiplicacaoDivisao, 0); //Deixa todos os elementos do array como 0
 
         String[] simbolo = new String[identicadoresArmazenados.length()]; //Serve para receber os valores * ou /
@@ -94,14 +86,26 @@ public class Calcular {
                     break;
                 default:
                     switch (leitor) {
-                        case "(":
+                        case "(": //Abre Parenteses
                             prioridade++;
                             if (prioridade > maximoPrioridade) {
                                 maximoPrioridade = prioridade;
                             }
                             break;
-                        case ")":
+                        case ")": //Fecha Parenteses
                             prioridade--;
+                            contador++;
+                            break;
+                        case "M": //Modulo
+                            fatorialModulo[contagemFatorialModulo] = contador+1;
+                            simbolo[contagemFatorialModulo] = "M";
+                            contagemFatorialModulo++;
+                            contador++;
+                            break;
+                        case "N": //Fatorial
+                            fatorialModulo[contagemFatorialModulo] = contador+1;
+                            simbolo[contagemFatorialModulo] = "N";
+                            contagemFatorialModulo++;
                             contador++;
                             break;
                         case "√": //Raiz
@@ -210,7 +214,98 @@ public class Calcular {
 
                     semParenteses = false;
 
-                    //Looping do calculo, dando prioridade a multiplicacao e divisisao, com base na ordem prioritária dos parenteses
+                    //Loopings do calculo, com base na ordem prioritária dos parenteses
+
+                    //Looping de prioridade a fatorial e modulo
+                    for (int count = contagemFatorialModulo; count >= 0; count--) {
+
+                        BigDecimal valorDireita = new BigDecimal(0); //Pega o valor da esquerda e o da direita, para realizar o calculo
+
+                        int seguirDireita = 0; //Fica analisando e armazenando os valores da direita e esquerda.
+                        boolean direita = false; //Verifica se já pegou o valor necessário da esquerda e da direita.
+                        boolean sinalDireita = true; //Verifica o sinal para aplicar ao valor da direita.
+
+                        if (fatorialModulo[count] >= valorInicialParenteses && fatorialModulo[count] <= valorFinalParenteses) {
+
+                            valores[fatorialModulo[count]] = "";
+
+                            //looping para pegar todos os valores da multiplicacao/divisao
+                            while (direita == false) { 
+
+                                //Verificando os valores a direita
+                                try {
+                                    if(valores[fatorialModulo[count]+seguirDireita].equals("") && direita == false){
+                                        System.out.println(valores[fatorialModulo[count]+seguirDireita]);
+                                        seguirDireita++;
+                                    }
+                                    else if (valores[fatorialModulo[count]+seguirDireita].equals("+") && direita == false) {
+                                        valores[fatorialModulo[count]+seguirDireita] = "";
+                                        sinalDireita = true;
+                                    }
+                                    else if (valores[fatorialModulo[count]+seguirDireita].equals("-") && direita == false) {
+                                        valores[fatorialModulo[count]+seguirDireita] = "";
+                                        sinalDireita = false;
+                                    }
+                                    else if(direita == false){
+    
+                                        valores[fatorialModulo[count]+seguirDireita] = (sinalDireita == true ? valores[fatorialModulo[count]+seguirDireita] :
+                                        (valores[fatorialModulo[count]+seguirDireita].substring(0,1).equals("-") ?
+                                        valores[fatorialModulo[count]+seguirDireita].substring(1,valores[fatorialModulo[count]+seguirDireita].length()) 
+                                        : "-" + valores[fatorialModulo[count]+seguirDireita]));
+    
+                                        valorDireita = new BigDecimal(valores[fatorialModulo[count]+seguirDireita]);
+
+                                        System.out.println(valorDireita);
+    
+                                        valores[fatorialModulo[count]+seguirDireita] = "";
+                                    
+                                        direita = true; 
+                                    }
+                                } catch (Exception e) {direita = true;}
+                            }
+
+                            //Fazendo o calculo do modulo e fatorial
+                            System.out.println("Direita: "+valorDireita);
+                            switch (simbolo[count]) {
+                                case "M":
+                                    valores[fatorialModulo[count]] = String.valueOf(valorDireita.abs());
+                                
+                                    //valores[multiplicacaoDivisao[count]] = String.valueOf((valorEsquerda.multiply(valorDireita)));
+                                    System.out.println("Valor: "+valores[fatorialModulo[count]]);
+                                    break;
+                                case "N":
+                                    
+                                    if (valorDireita.remainder(UM).compareTo(ZERO) == 0) 
+                                    {
+                                        BigDecimal pegarValor = new BigDecimal(1);
+
+                                        while (valorDireita.compareTo(UM) != 0) {
+                                            pegarValor = pegarValor.multiply(valorDireita);
+                                            valorDireita = valorDireita.subtract(UM);
+                                        }
+                                        valorDireita = pegarValor;
+                                    }
+                                    else
+                                    {
+                                        
+
+                                    }
+
+                                    valores[fatorialModulo[count]] = String.valueOf(valorDireita);
+
+                                    //valores[multiplicacaoDivisao[count]] = String.valueOf((valorEsquerda.multiply(valorDireita)));
+                                    System.out.println("Valor: "+valores[fatorialModulo[count]]);
+                                    break;
+                            }
+
+                            //Serve para computar que esse valor não existe mais para analise
+                            fatorialModulo[count] = -2;
+                            
+                        }
+
+                    }
+
+                    //Looping de prioridade a multiplicacao, divisisao e derivados
                     for (int count = contagemMD; count >= 0; count--) {
 
                         BigDecimal valorEsquerda = new BigDecimal(0), valorDireita = new BigDecimal(0); //Pega o valor da esquerda e o da direita, para realizar o calculo
@@ -263,10 +358,6 @@ public class Calcular {
                                 try {
                                     if(valores[multiplicacaoDivisao[count]+seguirEsquerda].equals("") && esquerda == false){
                                         seguirEsquerda--;
-                                        //if (multiplicacaoDivisao[count]+seguirEsquerda < valorInicialParenteses) {
-                                         //   seguirEsquerda++;
-                                         //   esquerda = true;
-                                        //}
                                     }
                                     else if (valores[multiplicacaoDivisao[count]+seguirEsquerda].equals("+") && esquerda == false) {
     

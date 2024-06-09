@@ -69,7 +69,8 @@ public class BotoesCientifico {
         botaoFatorial.setBounds(x, y,width, height);
 
         botaoFatorial.addActionListener((ActionEvent e) -> {
-                App.textoInserido += "n!";
+                Calcular.identicadoresArmazenados += "N$($";
+                App.textoInserido += "N(";
                 App.areaTexto.setText(App.textoInserido);
         });
 
@@ -124,7 +125,7 @@ public class BotoesCientifico {
         botaoEXP = new JButton();
         botaoEXP.setFont(new Font("Look and Feel", 1, 18));
         botaoEXP.setForeground(new Color(0, 0, 102));
-        botaoEXP.setText("exp");
+        botaoEXP.setText("NC");
         botaoEXP.setBorder(BorderFactory.createLineBorder(new Color(24, 96, 163), 3));
         botaoEXP.setRequestFocusEnabled(false);
         botaoEXP.setFocusable(false);
@@ -134,8 +135,8 @@ public class BotoesCientifico {
         botaoEXP.setBounds(x, y,width, height);
 
         botaoEXP.addActionListener((ActionEvent e) -> {
-                Calcular.identicadoresArmazenados += "^$($";
-                App.textoInserido += "^(";
+                Calcular.identicadoresArmazenados += "*$($1$0$^$";
+                App.textoInserido += "x(10^";
                 App.areaTexto.setText(App.textoInserido);
         });
 
@@ -156,7 +157,8 @@ public class BotoesCientifico {
         botaoModulo.setBounds(x, y,width, height);
 
         botaoModulo.addActionListener((ActionEvent e) -> {
-                App.textoInserido += "|x|";
+                Calcular.identicadoresArmazenados += "M$($";
+                App.textoInserido += "M(";
                 App.areaTexto.setText(App.textoInserido);
         });
 
@@ -167,7 +169,7 @@ public class BotoesCientifico {
         botaoResto = new JButton();
         botaoResto.setFont(new Font("Look and Feel", 1, 18));
         botaoResto.setForeground(new Color(0, 0, 102));
-        botaoResto.setText("rest ");
+        botaoResto.setText("RST");
         botaoResto.setBorder(BorderFactory.createLineBorder(new Color(24, 96, 163), 3));
         botaoResto.setRequestFocusEnabled(false);
         botaoResto.setFocusable(false);
