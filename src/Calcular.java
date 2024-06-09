@@ -12,7 +12,6 @@ import java.util.Arrays;
 
 public class Calcular {
 
-    private static final BigDecimal EULER = new BigDecimal(2.71d);
     private static final BigDecimal MENOS_UM = new BigDecimal(-1);
     private static final BigDecimal CEM = new BigDecimal(100);
     private static final BigDecimal ZERO = new BigDecimal(0);
@@ -41,13 +40,13 @@ public class Calcular {
         int[] log = new int[identicadoresArmazenados.length()]; //Responsável por armazenar a posição dos valores do log
         Arrays.fill(log, 0); //Deixa todos os elementos do array como 0
 
-        int contagemPot = 0; //Responsável por contar os valores de potencia
-        int[] pot = new int[identicadoresArmazenados.length()]; //Responsável por armazenar a posição dos valores de potencia
-        Arrays.fill(pot, 0); //Deixa todos os elementos do array como 0
-
         int contagemRaiz = 0; //Responsável por contar os valores raiz
         int[] raiz = new int[identicadoresArmazenados.length()]; //Responsável por armazenar a posição dos valores raiz
         Arrays.fill(raiz, 0); //Deixa todos os elementos do array como 0
+
+        int contagemPot = 0; //Responsável por contar os valores de potencia
+        int[] pot = new int[identicadoresArmazenados.length()]; //Responsável por armazenar a posição dos valores de potencia
+        Arrays.fill(pot, 0); //Deixa todos os elementos do array como 0
 
         int contagemMD = 0; //Responsável por contar os valores que multiplicam, dividem e derivados
         int[] multiplicacaoDivisao = new int[identicadoresArmazenados.length()]; //Responsável por armazenar a posição dos valores da multiplicacao, divisao e derivados
@@ -96,6 +95,12 @@ public class Calcular {
                             prioridade--;
                             contador++;
                             break;
+                        case "l": //Logaritmo
+                            log[contagemLog] = contador+1;
+                            simbolo[contagemLog] = "l";
+                            contagemLog++;
+                            contador++;
+                            break;
                         case "M": //Modulo
                             fatorialModulo[contagemFatorialModulo] = contador+1;
                             simbolo[contagemFatorialModulo] = "M";
@@ -109,15 +114,15 @@ public class Calcular {
                             contador++;
                             break;
                         case "√": //Raiz
-                            multiplicacaoDivisao[contagemMD] = contador+1;
-                            simbolo[contagemMD] = "√";
-                            contagemMD++;
+                            raiz[contagemRaiz] = contador+1;
+                            simbolo[contagemRaiz] = "√";
+                            contagemRaiz++;
                             contador++;
                             break;
                         case "^": //Potência
-                            multiplicacaoDivisao[contagemMD] = contador+1;
-                            simbolo[contagemMD] = "^";
-                            contagemMD++;
+                            pot[contagemPot] = contador+1;
+                            simbolo[contagemPot] = "^";
+                            contagemPot++;
                             contador++;
                             break;
                         case "*": //Multiplicacao
@@ -275,20 +280,23 @@ public class Calcular {
                                     break;
                                 case "N":
                                     
-                                    if (valorDireita.remainder(UM).compareTo(ZERO) == 0) 
+                                    if (valorDireita.remainder(UM).compareTo(ZERO) == 0 && valorDireita.doubleValue() < 3249 && valorDireita.doubleValue() >=0) 
                                     {
                                         BigDecimal pegarValor = new BigDecimal(1);
 
-                                        while (valorDireita.compareTo(UM) != 0) {
-                                            pegarValor = pegarValor.multiply(valorDireita);
-                                            valorDireita = valorDireita.subtract(UM);
+                                        if(valorDireita.compareTo(ZERO) != 0){
+                                            while (valorDireita.compareTo(UM) != 0) {
+                                                pegarValor = pegarValor.multiply(valorDireita);
+                                                valorDireita = valorDireita.subtract(UM);
+                                            }
                                         }
+                                        
                                         valorDireita = pegarValor;
                                     }
                                     else
                                     {
-                                        
-
+                                        App.Erro("ERRO: FATORIAL INVÁLIDO");
+                                        return;
                                     }
 
                                     valores[fatorialModulo[count]] = String.valueOf(valorDireita);
@@ -300,6 +308,345 @@ public class Calcular {
 
                             //Serve para computar que esse valor não existe mais para analise
                             fatorialModulo[count] = -2;
+                            
+                        }
+
+                    }
+
+                    //Looping de prioridade a logaritmos
+                    for (int count = contagemLog; count >= 0; count--) {
+
+                        BigDecimal valorEsquerda = new BigDecimal(0), valorDireita = new BigDecimal(0); //Pega o valor da esquerda e o da direita, para realizar o calculo
+
+                        int seguirEsquerda = 0, salvarValorEsquerda = 0, seguirDireita = 0; //Fica analisando e armazenando os valores da direita e esquerda.
+                        boolean esquerda = false, direita = false; //Verifica se já pegou o valor necessário da esquerda e da direita.
+                        boolean sinalDireita = true , //Verifica o sinal para aplicar ao valor da direita.
+                        validacaoEsquerda = false; //Usado para verificar a existencia de um sinal na esquerda (+/-).
+
+                        if (log[count] >= valorInicialParenteses && log[count] <= valorFinalParenteses) {
+
+                            valores[log[count]] = "";
+
+                            //looping para pegar todos os valores do logaritmo
+                            while (esquerda == false || direita == false) { 
+
+                                //Verificando a direita do logaritmo
+                                try {
+                                    if(valores[log[count]+seguirDireita].equals("") && direita == false){
+                                        System.out.println(valores[log[count]+seguirDireita]);
+                                        seguirDireita++;
+                                    }
+                                    else if (valores[log[count]+seguirDireita].equals("+") && direita == false) {
+                                        valores[log[count]+seguirDireita] = "";
+                                        sinalDireita = true;
+                                    }
+                                    else if (valores[log[count]+seguirDireita].equals("-") && direita == false) {
+                                        valores[log[count]+seguirDireita] = "";
+                                        sinalDireita = false;
+                                    }
+                                    else if(direita == false){
+    
+                                        valores[log[count]+seguirDireita] = (sinalDireita == true ? valores[log[count]+seguirDireita] :
+                                        (valores[log[count]+seguirDireita].substring(0,1).equals("-") ?
+                                        valores[log[count]+seguirDireita].substring(1,valores[log[count]+seguirDireita].length()) 
+                                        : "-" + valores[log[count]+seguirDireita]));
+    
+                                        valorDireita = new BigDecimal(valores[log[count]+seguirDireita]);
+
+                                        System.out.println(valorDireita);
+    
+                                        valores[log[count]+seguirDireita] = "";
+                                    
+                                        direita = true; 
+                                    }
+                                } catch (Exception e) {direita = true;
+                                }
+
+                                //Verificando a esquerda do logaritmo
+                                try {
+                                    if(valores[log[count]+seguirEsquerda].equals("") && esquerda == false){
+                                        seguirEsquerda--;
+                                    }
+                                    else if (valores[log[count]+seguirEsquerda].equals("+") && esquerda == false) {
+    
+                                        valores[log[count]+seguirEsquerda] = "";
+    
+                                        esquerda = true; 
+                                    }
+                                    else if (valores[log[count]+seguirEsquerda].equals("-") && esquerda == false) {
+    
+                                        valores[log[count]+seguirEsquerda] = 
+                                            (valores[log[count]+seguirEsquerda].substring(0,1).equals("-") ?
+                                            valores[log[count]+seguirEsquerda].substring(1, valores[log[count]+seguirEsquerda].length()) 
+                                            : "-" + valores[log[count]+seguirEsquerda]);
+    
+                                        valores[log[count]+seguirEsquerda] = "";
+    
+                                        valorEsquerda = valorEsquerda.multiply(MENOS_UM);
+    
+                                        esquerda = true; 
+                                    }
+                                    else if(esquerda == false){
+                                        if (validacaoEsquerda == false) {
+    
+                                            valorEsquerda = new BigDecimal(valores[log[count]+seguirEsquerda]);
+                                            valores[log[count]+seguirEsquerda] = "";
+                                            salvarValorEsquerda = seguirEsquerda;
+    
+                                            validacaoEsquerda = true;
+                                        }
+                                        else{
+                                            seguirEsquerda = salvarValorEsquerda;
+                                            esquerda = true; 
+                                        }
+                                        
+                                    }
+                                } catch (Exception e) 
+                                { 
+                                    //seguirEsquerda++;
+                                    seguirEsquerda = salvarValorEsquerda;
+                                    esquerda = true;
+                                }
+                                
+                            }
+
+                            //Fazendo o calculo dos logaritmo
+                            System.out.println("Esquerda: "+valorEsquerda+" || Direita: "+valorDireita);
+                            double vE = Math.log10(valorEsquerda.doubleValue());
+                            double vD = Math.log10(valorDireita.doubleValue());
+
+                            valorDireita = new BigDecimal((vD/vE));
+
+                            valores[log[count]+seguirEsquerda] = String.valueOf(valorDireita);
+                        
+                            //valores[log[count]+seguirEsquerda] = String.valueOf((valorEsquerda.multiply(valorDireita)));
+                            System.out.println("Valor: "+valorDireita);
+
+                            //Serve para computar que esse valor não existe mais para analise
+                            log[count] = -2;
+                            
+                        }
+
+                    }
+
+                    //Looping de prioridade a raiz
+                    for (int count = contagemRaiz; count >= 0; count--) {
+
+                        BigDecimal valorEsquerda = new BigDecimal(0), valorDireita = new BigDecimal(0); //Pega o valor da esquerda e o da direita, para realizar o calculo
+
+                        int seguirEsquerda = 0, salvarValorEsquerda = 0, seguirDireita = 0; //Fica analisando e armazenando os valores da direita e esquerda.
+                        boolean esquerda = false, direita = false; //Verifica se já pegou o valor necessário da esquerda e da direita.
+                        boolean sinalDireita = true , //Verifica o sinal para aplicar ao valor da direita.
+                         validacaoEsquerda = false; //Usado para verificar a existencia de um sinal na esquerda (+/-).
+
+                        if (raiz[count] >= valorInicialParenteses && raiz[count] <= valorFinalParenteses) {
+
+                            valores[raiz[count]] = "";
+
+                            //looping para pegar todos os valores da raiz
+                            while (esquerda == false || direita == false) { 
+
+                                //Verificando a direita da raiz
+                                try {
+                                    if(valores[raiz[count]+seguirDireita].equals("") && direita == false){
+                                        System.out.println(valores[raiz[count]+seguirDireita]);
+                                        seguirDireita++;
+                                    }
+                                    else if (valores[raiz[count]+seguirDireita].equals("+") && direita == false) {
+                                        valores[raiz[count]+seguirDireita] = "";
+                                        sinalDireita = true;
+                                    }
+                                    else if (valores[raiz[count]+seguirDireita].equals("-") && direita == false) {
+                                        valores[raiz[count]+seguirDireita] = "";
+                                        sinalDireita = false;
+                                    }
+                                    else if(direita == false){
+    
+                                        valores[raiz[count]+seguirDireita] = (sinalDireita == true ? valores[raiz[count]+seguirDireita] :
+                                        (valores[raiz[count]+seguirDireita].substring(0,1).equals("-") ?
+                                        valores[raiz[count]+seguirDireita].substring(1,valores[raiz[count]+seguirDireita].length()) 
+                                        : "-" + valores[raiz[count]+seguirDireita]));
+    
+                                        valorDireita = new BigDecimal(valores[raiz[count]+seguirDireita]);
+
+                                        System.out.println(valorDireita);
+    
+                                        valores[raiz[count]+seguirDireita] = "";
+                                    
+                                        direita = true; 
+                                    }
+                                } catch (Exception e) {direita = true;
+                                }
+
+                                //Verificando a esquerda da raiz
+                                try {
+                                    if(valores[raiz[count]+seguirEsquerda].equals("") && esquerda == false){
+                                        seguirEsquerda--;
+                                    }
+                                    else if (valores[raiz[count]+seguirEsquerda].equals("+") && esquerda == false) {
+    
+                                        valores[raiz[count]+seguirEsquerda] = "";
+    
+                                        esquerda = true; 
+                                    }
+                                    else if (valores[raiz[count]+seguirEsquerda].equals("-") && esquerda == false) {
+    
+                                        valores[raiz[count]+seguirEsquerda] = 
+                                            (valores[raiz[count]+seguirEsquerda].substring(0,1).equals("-") ?
+                                            valores[raiz[count]+seguirEsquerda].substring(1, valores[raiz[count]+seguirEsquerda].length()) 
+                                            : "-" + valores[raiz[count]+seguirEsquerda]);
+    
+                                        valores[raiz[count]+seguirEsquerda] = "";
+    
+                                        valorEsquerda = valorEsquerda.multiply(MENOS_UM);
+    
+                                        esquerda = true; 
+                                    }
+                                    else if(esquerda == false){
+                                        if (validacaoEsquerda == false) {
+    
+                                            valorEsquerda = new BigDecimal(valores[raiz[count]+seguirEsquerda]);
+                                            valores[raiz[count]+seguirEsquerda] = "";
+                                            salvarValorEsquerda = seguirEsquerda;
+    
+                                            validacaoEsquerda = true;
+                                        }
+                                        else{
+                                            seguirEsquerda = salvarValorEsquerda;
+                                            esquerda = true; 
+                                        }
+                                        
+                                    }
+                                } catch (Exception e) 
+                                { 
+                                    //seguirEsquerda++;
+                                    seguirEsquerda = salvarValorEsquerda;
+                                    esquerda = true;
+                                }
+                                
+                            }
+
+                            //Fazendo o calculo da raiz
+                            System.out.println("Esquerda: "+valorEsquerda+" || Direita: "+valorDireita);
+
+                            valores[raiz[count]+seguirEsquerda] = String.valueOf(Math.pow(valorDireita.doubleValue(), 1/valorEsquerda.doubleValue()));
+                                
+                            //valores[raiz[count]+seguirEsquerda] = String.valueOf((valorEsquerda.multiply(valorDireita)));
+                            System.out.println("Valor: "+valores[raiz[count]+seguirEsquerda]);
+
+                            //Serve para computar que esse valor não existe mais para analise
+                            raiz[count] = -2;
+                            
+                        }
+
+                    }
+
+                    //Looping de prioridade a potencia
+                    for (int count = contagemPot; count >= 0; count--) {
+
+                        BigDecimal valorEsquerda = new BigDecimal(0), valorDireita = new BigDecimal(0); //Pega o valor da esquerda e o da direita, para realizar o calculo
+
+                        int seguirEsquerda = 0, salvarValorEsquerda = 0, seguirDireita = 0; //Fica analisando e armazenando os valores da direita e esquerda.
+                        boolean esquerda = false, direita = false; //Verifica se já pegou o valor necessário da esquerda e da direita.
+                        boolean sinalDireita = true , //Verifica o sinal para aplicar ao valor da direita.
+                         validacaoEsquerda = false; //Usado para verificar a existencia de um sinal na esquerda (+/-).
+
+                        if (pot[count] >= valorInicialParenteses && pot[count] <= valorFinalParenteses) {
+
+                            valores[pot[count]] = "";
+
+                            //looping para pegar todos os valores da potencia
+                            while (esquerda == false || direita == false) { 
+
+                                //Verificando a direita da potencia
+                                try {
+                                    if(valores[pot[count]+seguirDireita].equals("") && direita == false){
+                                        System.out.println(valores[pot[count]+seguirDireita]);
+                                        seguirDireita++;
+                                    }
+                                    else if (valores[pot[count]+seguirDireita].equals("+") && direita == false) {
+                                        valores[pot[count]+seguirDireita] = "";
+                                        sinalDireita = true;
+                                    }
+                                    else if (valores[pot[count]+seguirDireita].equals("-") && direita == false) {
+                                        valores[pot[count]+seguirDireita] = "";
+                                        sinalDireita = false;
+                                    }
+                                    else if(direita == false){
+    
+                                        valores[pot[count]+seguirDireita] = (sinalDireita == true ? valores[pot[count]+seguirDireita] :
+                                        (valores[pot[count]+seguirDireita].substring(0,1).equals("-") ?
+                                        valores[pot[count]+seguirDireita].substring(1,valores[pot[count]+seguirDireita].length()) 
+                                        : "-" + valores[pot[count]+seguirDireita]));
+    
+                                        valorDireita = new BigDecimal(valores[pot[count]+seguirDireita]);
+
+                                        System.out.println(valorDireita);
+    
+                                        valores[pot[count]+seguirDireita] = "";
+                                    
+                                        direita = true; 
+                                    }
+                                } catch (Exception e) {direita = true;
+                                }
+
+                                //Verificando a esquerda da potencia
+                                try {
+                                    if(valores[pot[count]+seguirEsquerda].equals("") && esquerda == false){
+                                        seguirEsquerda--;
+                                    }
+                                    else if (valores[pot[count]+seguirEsquerda].equals("+") && esquerda == false) {
+    
+                                        valores[pot[count]+seguirEsquerda] = "";
+    
+                                        esquerda = true; 
+                                    }
+                                    else if (valores[pot[count]+seguirEsquerda].equals("-") && esquerda == false) {
+    
+                                        valores[pot[count]+seguirEsquerda] = 
+                                            (valores[pot[count]+seguirEsquerda].substring(0,1).equals("-") ?
+                                            valores[pot[count]+seguirEsquerda].substring(1, valores[pot[count]+seguirEsquerda].length()) 
+                                            : "-" + valores[pot[count]+seguirEsquerda]);
+    
+                                        valores[pot[count]+seguirEsquerda] = "";
+    
+                                        valorEsquerda = valorEsquerda.multiply(MENOS_UM);
+    
+                                        esquerda = true; 
+                                    }
+                                    else if(esquerda == false){
+                                        if (validacaoEsquerda == false) {
+    
+                                            valorEsquerda = new BigDecimal(valores[pot[count]+seguirEsquerda]);
+                                            valores[pot[count]+seguirEsquerda] = "";
+                                            salvarValorEsquerda = seguirEsquerda;
+    
+                                            validacaoEsquerda = true;
+                                        }
+                                        else{
+                                            seguirEsquerda = salvarValorEsquerda;
+                                            esquerda = true; 
+                                        }
+                                        
+                                    }
+                                } catch (Exception e) 
+                                { 
+                                    //seguirEsquerda++;
+                                    seguirEsquerda = salvarValorEsquerda;
+                                    esquerda = true;
+                                }
+                                
+                            }
+
+                            //Fazendo o calculo da potencia
+                            System.out.println("Esquerda: "+valorEsquerda+" || Direita: "+valorDireita);
+                            valores[pot[count]+seguirEsquerda] = String.valueOf(Math.pow(valorEsquerda.doubleValue(), valorDireita.doubleValue()));
+                                    
+                            //valores[pot[count]+seguirEsquerda] = String.valueOf((valorEsquerda.multiply(valorDireita)));
+                            System.out.println("Valor: "+valores[pot[count]+seguirEsquerda]);
+
+                            //Serve para computar que esse valor não existe mais para analise
+                            pot[count] = -2;
                             
                         }
 
@@ -406,14 +753,9 @@ public class Calcular {
                             System.out.println("Esquerda: "+valorEsquerda+" || Direita: "+valorDireita);
                             switch (simbolo[count]) {
                                 case "√":
+
                                     valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf(Math.pow(valorDireita.doubleValue(), 1/valorEsquerda.doubleValue()));
                                 
-                                    //valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf((valorEsquerda.multiply(valorDireita)));
-                                    System.out.println("Valor: "+valores[multiplicacaoDivisao[count]+seguirEsquerda]);
-                                    break;
-                                case "^":
-                                    valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf(Math.pow(valorEsquerda.doubleValue(), valorDireita.doubleValue()));
-                                    
                                     //valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf((valorEsquerda.multiply(valorDireita)));
                                     System.out.println("Valor: "+valores[multiplicacaoDivisao[count]+seguirEsquerda]);
                                     break;
@@ -422,12 +764,24 @@ public class Calcular {
                                     System.out.println("Valor: "+valores[multiplicacaoDivisao[count]+seguirEsquerda]);
                                     break;
                                 case "/":
-                                    valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf((valorEsquerda.divide(valorDireita)));
-                                    System.out.println("Valor: "+valores[multiplicacaoDivisao[count]+seguirEsquerda]);
+                                    try {
+                                        valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf((valorEsquerda.divide(valorDireita)));
+                                        System.out.println("Valor: "+valores[multiplicacaoDivisao[count]+seguirEsquerda]);
+                                    } catch (Exception e) {
+                                        App.Erro("ERRO: DIVISÃO POR ZERO");
+                                        return;
+                                    }
+                                    
                                     break;
                                 case "\\":
-                                    valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf((valorEsquerda.remainder(valorDireita)));
-                                    System.out.println("Valor: "+valores[multiplicacaoDivisao[count]+seguirEsquerda]);
+                                    try {
+                                        valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf((valorEsquerda.remainder(valorDireita)));
+                                        System.out.println("Valor: "+valores[multiplicacaoDivisao[count]+seguirEsquerda]);
+                                    } catch (Exception e) {
+                                        App.Erro("ERRO: DIVISÃO POR ZERO");
+                                        return;
+                                    }
+                                    
                                     break;
                                 case "%":
                                     valorEsquerda = valorEsquerda.divide(CEM);
@@ -487,7 +841,7 @@ public class Calcular {
                             
                         }
                         else */if(!valores[count].equals("")){
-                            resultado = resultado.add(BigDecimal.valueOf(Double.parseDouble(valores[count])));
+                            resultado = resultado.add(new BigDecimal(valores[count]));
                         }
                         valores[count]="";
                         pegarIDValor = count;

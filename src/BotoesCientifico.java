@@ -69,6 +69,7 @@ public class BotoesCientifico {
         botaoFatorial.setBounds(x, y,width, height);
 
         botaoFatorial.addActionListener((ActionEvent e) -> {
+                App.totalParenteses++;
                 Calcular.identicadoresArmazenados += "N$($";
                 App.textoInserido += "N(";
                 App.areaTexto.setText(App.textoInserido);
@@ -91,6 +92,7 @@ public class BotoesCientifico {
         botaoAbrindoParenteses.setBounds(x, y,width, height);
 
         botaoAbrindoParenteses.addActionListener((ActionEvent e) -> {
+                App.totalParenteses++;
                 Calcular.identicadoresArmazenados += "($";
                 App.textoInserido += "(";
                 App.areaTexto.setText(App.textoInserido);
@@ -113,6 +115,7 @@ public class BotoesCientifico {
         botaoFechandoParenteses.setBounds(x, y,width, height);
 
         botaoFechandoParenteses.addActionListener((ActionEvent e) -> {
+                App.totalParenteses--;
                 Calcular.identicadoresArmazenados += ")$";
                 App.textoInserido += ")";
                 App.areaTexto.setText(App.textoInserido);
@@ -135,6 +138,7 @@ public class BotoesCientifico {
         botaoEXP.setBounds(x, y,width, height);
 
         botaoEXP.addActionListener((ActionEvent e) -> {
+                App.totalParenteses++;
                 Calcular.identicadoresArmazenados += "*$($1$0$^$";
                 App.textoInserido += "x(10^";
                 App.areaTexto.setText(App.textoInserido);
@@ -157,6 +161,7 @@ public class BotoesCientifico {
         botaoModulo.setBounds(x, y,width, height);
 
         botaoModulo.addActionListener((ActionEvent e) -> {
+                App.totalParenteses++;
                 Calcular.identicadoresArmazenados += "M$($";
                 App.textoInserido += "M(";
                 App.areaTexto.setText(App.textoInserido);
@@ -201,8 +206,8 @@ public class BotoesCientifico {
         botaoXElevadoPotenciaY.setBounds(x, y,width, height);
 
         botaoXElevadoPotenciaY.addActionListener((ActionEvent e) -> {
-                Calcular.identicadoresArmazenados += "^$($";
-                App.textoInserido += "^(";
+                Calcular.identicadoresArmazenados += "^$";
+                App.textoInserido += "^";
                 App.areaTexto.setText(App.textoInserido);
         });
 
@@ -223,8 +228,8 @@ public class BotoesCientifico {
         botaoDezElevadoPotenciaX.setBounds(x, y,width, height);
 
         botaoDezElevadoPotenciaX.addActionListener((ActionEvent e) -> {
-                Calcular.identicadoresArmazenados += "1$0$^$($";
-                App.textoInserido += "10^(";
+                Calcular.identicadoresArmazenados += "1$0$^$";
+                App.textoInserido += "10^";
                 App.areaTexto.setText(App.textoInserido);
         });
 
@@ -245,7 +250,8 @@ public class BotoesCientifico {
         botaoLogaritmo.setBounds(x, y,width, height);
 
         botaoLogaritmo.addActionListener((ActionEvent e) -> {
-                App.textoInserido += "log";
+                Calcular.identicadoresArmazenados += "1$0$l$";
+                App.textoInserido += "10log";
                 App.areaTexto.setText(App.textoInserido);
         });
 
@@ -266,7 +272,11 @@ public class BotoesCientifico {
         botaoLogaritmoNatural.setBounds(x, y,width, height);
 
         botaoLogaritmoNatural.addActionListener((ActionEvent e) -> {
-                App.textoInserido += "ln";
+                for (byte i = 0; i < App.formatoDecimal.format(Math.PI).length(); i++) {
+                    Calcular.identicadoresArmazenados += App.formatoDecimal.format(Math.E).substring(i,i+1)+"$";
+                }
+                Calcular.identicadoresArmazenados += "l$";
+                App.textoInserido += App.formatoDecimal.format(Math.E)+"log";
                 App.areaTexto.setText(App.textoInserido);
         });
 
@@ -287,8 +297,8 @@ public class BotoesCientifico {
         botaoXElevadoPotencia3.setBounds(x, y,width, height);
 
         botaoXElevadoPotencia3.addActionListener((ActionEvent e) -> {
-                Calcular.identicadoresArmazenados += "^$($3$)$";
-                App.textoInserido += "^(3)";
+                Calcular.identicadoresArmazenados += "^$3$";
+                App.textoInserido += "^3";
                 App.areaTexto.setText(App.textoInserido);
         });
 
@@ -331,7 +341,7 @@ public class BotoesCientifico {
         botaoRaizYX.setBounds(x, y,width, height);
 
         botaoRaizYX.addActionListener((ActionEvent e) -> {
-            Calcular.identicadoresArmazenados += "√$";
+                Calcular.identicadoresArmazenados += "√$";
                 App.textoInserido += "√";
                 App.areaTexto.setText(App.textoInserido);
         });
@@ -353,8 +363,8 @@ public class BotoesCientifico {
         botaoDoisElevadoPotenciaX.setBounds(x, y,width, height);
 
         botaoDoisElevadoPotenciaX.addActionListener((ActionEvent e) -> {
-                Calcular.identicadoresArmazenados += "2$^$($";
-                App.textoInserido += "2^(";
+                Calcular.identicadoresArmazenados += "2$^$";
+                App.textoInserido += "2^";
                 App.areaTexto.setText(App.textoInserido);
         });
 
@@ -375,7 +385,8 @@ public class BotoesCientifico {
         botaoLogYBaseX.setBounds(x, y,width, height);
 
         botaoLogYBaseX.addActionListener((ActionEvent e) -> {
-                App.textoInserido += "logyx";
+                Calcular.identicadoresArmazenados += "l$";
+                App.textoInserido += "log";
                 App.areaTexto.setText(App.textoInserido);
         });
 
@@ -399,8 +410,8 @@ public class BotoesCientifico {
                 for (byte i = 0; i < App.formatoDecimal.format(Math.PI).length(); i++) {
                     Calcular.identicadoresArmazenados += App.formatoDecimal.format(Math.E).substring(i,i+1)+"$";
                 }
-                Calcular.identicadoresArmazenados += "^$($";
-                App.textoInserido += App.formatoDecimal.format(Math.E)+"^(";
+                Calcular.identicadoresArmazenados += "^$";
+                App.textoInserido += App.formatoDecimal.format(Math.E)+"^";
                 App.areaTexto.setText(App.textoInserido);
         });
 

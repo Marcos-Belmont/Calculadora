@@ -82,13 +82,13 @@ public class Tela1 extends JFrame {
         painel.add(botoesCientifico.BotaoResto(                 (short)(App.QUADRO_WIDTH-60),(short)(App.QUADRO_HEIGHT-296),(short)50,(short)30                           ));//feito
         painel.add(botoesCientifico.BotaoXElevadoPotenciaY(     (short)(App.QUADRO_WIDTH-284),(short)(App.QUADRO_HEIGHT-224),(short)50,(short)30                            ));//feito
         painel.add(botoesCientifico.BotaoDezElevadoPotenciaX(   (short)(App.QUADRO_WIDTH-284),(short)(App.QUADRO_HEIGHT-188),(short)50,(short)30                            ));//feito
-        painel.add(botoesCientifico.BotaoLogaritmo(             (short)(App.QUADRO_WIDTH-284),(short)(App.QUADRO_HEIGHT-152),(short)50,(short)30                          ));//feito
+        painel.add(botoesCientifico.BotaoLogaritmo(             (short)(App.QUADRO_WIDTH-340),(short)(App.QUADRO_HEIGHT-152),(short)50,(short)30                          ));//feito
         painel.add(botoesCientifico.BotaoLogaritmoNatural(      (short)(App.QUADRO_WIDTH-284),(short)(App.QUADRO_HEIGHT-116),(short)50,(short)30                        ));//feito
         painel.add(botoesCientifico.BotaoXElevadoPotencia3(     (short)(App.QUADRO_WIDTH-340),(short)(App.QUADRO_HEIGHT-296),(short)50,(short)30                         ));//feito
         painel.add(botoesCientifico.BotaoRaizCubicaX(           (short)(App.QUADRO_WIDTH-340),(short)(App.QUADRO_HEIGHT-260),(short)50,(short)30                        ));//feito
         painel.add(botoesCientifico.BotaoRaizYX(                (short)(App.QUADRO_WIDTH-340),(short)(App.QUADRO_HEIGHT-224),(short)50,(short)30                         ));//feito
         painel.add(botoesCientifico.BotaoDoisElevadoPotenciaX(  (short)(App.QUADRO_WIDTH-340),(short)(App.QUADRO_HEIGHT-188),(short)50,(short)30                        ));//feito
-        painel.add(botoesCientifico.BotaoLogYBaseX(             (short)(App.QUADRO_WIDTH-340),(short)(App.QUADRO_HEIGHT-152),(short)50,(short)30                       ));//feito
+        painel.add(botoesCientifico.BotaoLogYBaseX(             (short)(App.QUADRO_WIDTH-284),(short)(App.QUADRO_HEIGHT-152),(short)50,(short)30                       ));//feito
         painel.add(botoesCientifico.BotaoEElevadoPotenciaX(     (short)(App.QUADRO_WIDTH-340),(short)(App.QUADRO_HEIGHT-116),(short)50,(short)30                       ));//feito
         painel.add(botoesExtra.BotaoEM(                  (short)(App.QUADRO_WIDTH-340),(short)(App.QUADRO_HEIGHT-332),(short)50,(short)30                       ));//feito
         painel.add(botoesExtra.BotaoF(                      (short)(App.QUADRO_WIDTH-172),(short)(App.QUADRO_HEIGHT-332),(short)50,(short)30                       ));//feito

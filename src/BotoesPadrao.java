@@ -236,7 +236,20 @@ public class BotoesPadrao {
         botaoIgual.setBounds(x, y,width, height);
 
         botaoIgual.addActionListener((ActionEvent e) -> {
-            Calcular.Resultado();
+            try {
+                if (App.totalParenteses > 0) {
+                    App.Erro("ERRO: PARENTESES NÃO  FECHADO");
+                }
+                else if (App.totalParenteses < 0) {
+                    App.Erro("ERRO: PARENTESES NÃO  ABERTO");
+                }
+                else{
+                    Calcular.Resultado();
+                }
+            } catch (Exception exception) {
+                App.Erro("ERRO!");
+            }
+            App.totalParenteses = 0;
         });
 
         return botaoIgual;
@@ -258,7 +271,30 @@ public class BotoesPadrao {
         botaoApagar.addActionListener((ActionEvent e) -> {
             if (App.textoInserido.length() != 0) {
                 Calcular.identicadoresArmazenados = Calcular.identicadoresArmazenados.substring(0, Calcular.identicadoresArmazenados.length()-2);
-                App.textoInserido = App.textoInserido.substring(0, App.textoInserido.length() - 1);
+                switch (App.textoInserido.substring(App.textoInserido.length() - 1, App.textoInserido.length())) {
+                    case "(":
+                        App.totalParenteses--;
+                        break;
+                    case ")":
+                        App.totalParenteses++;
+                        break;
+                }
+                if (App.textoInserido.substring(App.textoInserido.length()-1, App.textoInserido.length()).equals("l")||
+                App.textoInserido.substring(App.textoInserido.length()-1, App.textoInserido.length()).equals("o")||
+                App.textoInserido.substring(App.textoInserido.length()-1, App.textoInserido.length()).equals("g")) {
+                    try {
+                        while (App.textoInserido.substring(App.textoInserido.length()-1, App.textoInserido.length()).equals("l")||
+                            App.textoInserido.substring(App.textoInserido.length()-1, App.textoInserido.length()).equals("o")||
+                            App.textoInserido.substring(App.textoInserido.length()-1, App.textoInserido.length()).equals("g")) { 
+                        App.textoInserido = App.textoInserido.substring(0, App.textoInserido.length() - 1);
+                    }
+                    } catch (Exception exception) {
+                        App.textoInserido = "";
+                    }
+                }
+                else{
+                    App.textoInserido = App.textoInserido.substring(0, App.textoInserido.length() - 1);
+                }
                 App.areaTexto.setText(App.textoInserido);
             }
         });
@@ -283,6 +319,7 @@ public class BotoesPadrao {
             Calcular.identicadoresArmazenados = "";
             App.textoInserido = "";
             App.areaTexto.setText(App.textoInserido);
+            App.totalParenteses = 0;
         });
 
         return botaoApagarTudo;
@@ -479,8 +516,8 @@ public class BotoesPadrao {
         botaoElevadoPotenciaDois.setBounds(x, y,width, height);
 
         botaoElevadoPotenciaDois.addActionListener((ActionEvent e) -> {
-            Calcular.identicadoresArmazenados += "^$($2$)$";
-            App.textoInserido += "^(2)";
+            Calcular.identicadoresArmazenados += "^$2$";
+            App.textoInserido += "^2";
             App.areaTexto.setText(App.textoInserido);
         });
 

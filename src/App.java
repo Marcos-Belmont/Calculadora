@@ -29,6 +29,14 @@ public class App{
 
     private static int mouseX, mouseY;
 
+    public static int totalParenteses = 0;
+
+    public static void Erro(String informacao){
+        textoInserido = "";
+        Calcular.identicadoresArmazenados = "";
+        areaTexto.setText(informacao);
+    }
+
     private static void DefinindoQuadro(){ //Metodo criado com o intuito de organizar a criação do quadro/tela
 
         quadro.setSize(QUADRO_WIDTH,QUADRO_HEIGHT); //O tamanho, em pixels, do quadro/tela é definido aqui.
