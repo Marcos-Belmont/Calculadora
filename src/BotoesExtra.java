@@ -9,8 +9,8 @@ public class BotoesExtra {
     //Euler-Mascheroni (γ) 0.57721566490153
     //Constante de Feigenbaum (δ) 4.66920160910299
     //Constante de Ramanujan-Soldner (μ) 0.37250741078136
-    //Constante de Apéry (G) 0.91596559417721
     //constante de phi (φ) 1.61803398874989
+    //Constante de Apéry (G) 0.91596559417721
 
     public JButton BotaoEM(short x, short y, short width, short height){
         botaoEM = new JButton();
