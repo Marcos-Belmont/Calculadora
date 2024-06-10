@@ -752,13 +752,6 @@ public class Calcular {
                             //Fazendo o calculo da multplicao e divisao
                             System.out.println("Esquerda: "+valorEsquerda+" || Direita: "+valorDireita);
                             switch (simbolo[count]) {
-                                case "√":
-
-                                    valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf(Math.pow(valorDireita.doubleValue(), 1/valorEsquerda.doubleValue()));
-                                
-                                    //valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf((valorEsquerda.multiply(valorDireita)));
-                                    System.out.println("Valor: "+valores[multiplicacaoDivisao[count]+seguirEsquerda]);
-                                    break;
                                 case "*":
                                     valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf((valorEsquerda.multiply(valorDireita)));
                                     System.out.println("Valor: "+valores[multiplicacaoDivisao[count]+seguirEsquerda]);
