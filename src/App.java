@@ -163,7 +163,7 @@ public class App{
         DefinindoAreaTexto(); //Definindo a area de texto.
 
         //Formatando a string
-        DecimalFormatSymbols simbolos = new DecimalFormatSymbols(new Locale("pt", "BR")); //Definindo como português brasileiro.
+        DecimalFormatSymbols simbolos = new DecimalFormatSymbols((Locale.of("pt", "BR"))); //Definindo como português brasileiro.
         simbolos.setDecimalSeparator(',');
         formatoDecimal = new DecimalFormat("#.##############", simbolos);
 

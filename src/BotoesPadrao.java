@@ -450,7 +450,7 @@ public class BotoesPadrao {
 
         botaoCasas.addActionListener((ActionEvent e) -> {
 
-            DecimalFormatSymbols simbolos = new DecimalFormatSymbols(new Locale("pt", "BR"));
+            DecimalFormatSymbols simbolos = new DecimalFormatSymbols(Locale.of("pt", "BR"));
             simbolos.setDecimalSeparator(',');
 
             App.QuantidadeCasas++;
