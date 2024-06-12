@@ -3,7 +3,7 @@
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
   <jar>D:\trabalho-java\equipea-calculadora\Calculadora\Calculadora.jar</jar>
-  <outfile>D:\trabalho-java\equipea-calculadora\Calculadora\CalculadoraEC.exe</outfile>
+  <outfile>D:\trabalho-java\equipea-calculadora\Calculadora\Calculadora_E_C.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
@@ -22,10 +22,10 @@
     <maxVersion></maxVersion>
   </jre>
   <messages>
-    <startupErr>Um erro aconteceu enquanto iniciava o aplicativo.</startupErr>
-    <jreNotFoundErr>Este aplicativo requer um Java Runtime Environment.</jreNotFoundErr>
-    <jreVersionErr>Este aplicativo requer um Java Runtime Environment maior ou igual a 1.0.0.</jreVersionErr>
+    <startupErr>Um erro aconteceu enquanto inicializava o aplicativo.</startupErr>
+    <jreNotFoundErr>Este aplicativo requer o Java Runtime Environment.</jreNotFoundErr>
+    <jreVersionErr>Este aplicativo requer uma versao Java Runtime Environment superior a 1.0.0.</jreVersionErr>
     <launcherErr>O registro refere-se a uma instalacao inexistente do Java Runtime Environment ou o tempo de execucao esta corrompido.</launcherErr>
-    <instanceAlreadyExistsMsg>Um aplicativo instanciado ja esta sendo executado.</instanceAlreadyExistsMsg>
+    <instanceAlreadyExistsMsg>Uma instancia do aplicativo ja esta em execucao.</instanceAlreadyExistsMsg>
   </messages>
 </launch4jConfig>

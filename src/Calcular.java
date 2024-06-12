@@ -97,55 +97,55 @@ public class Calcular {
                             break;
                         case "l": //Logaritmo
                             log[contagemLog] = contador+1;
-                            simbolo[contagemLog] = "l";
+                            simbolo[log[contagemLog]] = "l";
                             contagemLog++;
                             contador++;
                             break;
                         case "M": //Modulo
                             fatorialModulo[contagemFatorialModulo] = contador+1;
-                            simbolo[contagemFatorialModulo] = "M";
+                            simbolo[fatorialModulo[contagemFatorialModulo]] = "M";
                             contagemFatorialModulo++;
                             contador++;
                             break;
                         case "N": //Fatorial
                             fatorialModulo[contagemFatorialModulo] = contador+1;
-                            simbolo[contagemFatorialModulo] = "N";
+                            simbolo[fatorialModulo[contagemFatorialModulo]] = "N";
                             contagemFatorialModulo++;
                             contador++;
                             break;
                         case "√": //Raiz
                             raiz[contagemRaiz] = contador+1;
-                            simbolo[contagemRaiz] = "√";
+                            simbolo[raiz[contagemRaiz]] = "√";
                             contagemRaiz++;
                             contador++;
                             break;
                         case "^": //Potência
                             pot[contagemPot] = contador+1;
-                            simbolo[contagemPot] = "^";
+                            simbolo[pot[contagemPot]] = "^";
                             contagemPot++;
                             contador++;
                             break;
                         case "*": //Multiplicacao
                             multiplicacaoDivisao[contagemMD] = contador+1;
-                            simbolo[contagemMD] = "*";
+                            simbolo[multiplicacaoDivisao[contagemMD]] = "*";
                             contagemMD++;
                             contador++;
                             break;
                         case "/": //Divisao
                             multiplicacaoDivisao[contagemMD] = contador+1;
-                            simbolo[contagemMD] = "/";
+                            simbolo[multiplicacaoDivisao[contagemMD]] = "/";
                             contagemMD++;
                             contador++;
                             break;
                         case "\\": //Resto
                             multiplicacaoDivisao[contagemMD] = contador+1;
-                            simbolo[contagemMD] = "\\";
+                            simbolo[multiplicacaoDivisao[contagemMD]] = "\\";
                             contagemMD++;
                             contador++;
                             break;
                         case "%": //Porcentagem
                             multiplicacaoDivisao[contagemMD] = contador+1;
-                            simbolo[contagemMD] = "%";
+                            simbolo[multiplicacaoDivisao[contagemMD]] = "%";
                             contagemMD++;
                             contador++;
                             break;
@@ -234,7 +234,7 @@ public class Calcular {
 
                             valores[fatorialModulo[count]] = "";
 
-                            //looping para pegar todos os valores da multiplicacao/divisao
+                            //looping para pegar todos os valores do fatorial e modulo
                             while (direita == false) { 
 
                                 //Verificando os valores a direita
@@ -259,8 +259,6 @@ public class Calcular {
                                         : "-" + valores[fatorialModulo[count]+seguirDireita]));
     
                                         valorDireita = new BigDecimal(valores[fatorialModulo[count]+seguirDireita]);
-
-                                        System.out.println(valorDireita);
     
                                         valores[fatorialModulo[count]+seguirDireita] = "";
                                     
@@ -270,8 +268,7 @@ public class Calcular {
                             }
 
                             //Fazendo o calculo do modulo e fatorial
-                            System.out.println("Direita: "+valorDireita);
-                            switch (simbolo[count]) {
+                            switch (simbolo[fatorialModulo[count]]) {
                                 case "M":
                                     valores[fatorialModulo[count]] = String.valueOf(valorDireita.abs());
                                 
@@ -698,8 +695,7 @@ public class Calcular {
                                     
                                         direita = true; 
                                     }
-                                } catch (Exception e) {direita = true;
-                                }
+                                } catch (Exception e) {direita = true;}
 
                                 //Verificando a esquerda da multiplicacao e divisao
                                 try {
@@ -727,7 +723,6 @@ public class Calcular {
                                     }
                                     else if(esquerda == false){
                                         if (validacaoEsquerda == false) {
-    
                                             valorEsquerda = new BigDecimal(valores[multiplicacaoDivisao[count]+seguirEsquerda]);
                                             valores[multiplicacaoDivisao[count]+seguirEsquerda] = "";
                                             salvarValorEsquerda = seguirEsquerda;
@@ -743,6 +738,7 @@ public class Calcular {
                                 } catch (Exception e) 
                                 { 
                                     //seguirEsquerda++;
+                                    System.out.println("Cai aqui");
                                     seguirEsquerda = salvarValorEsquerda;
                                     esquerda = true;
                                 }
@@ -751,7 +747,7 @@ public class Calcular {
 
                             //Fazendo o calculo da multplicao e divisao
                             System.out.println("Esquerda: "+valorEsquerda+" || Direita: "+valorDireita);
-                            switch (simbolo[count]) {
+                            switch (simbolo[multiplicacaoDivisao[count]]) {
                                 case "*":
                                     valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf((valorEsquerda.multiply(valorDireita)));
                                     System.out.println("Valor: "+valores[multiplicacaoDivisao[count]+seguirEsquerda]);
