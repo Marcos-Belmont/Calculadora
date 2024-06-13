@@ -24,7 +24,7 @@
   <messages>
     <startupErr>Um erro aconteceu enquanto inicializava o aplicativo.</startupErr>
     <jreNotFoundErr>Este aplicativo requer o Java Runtime Environment.</jreNotFoundErr>
-    <jreVersionErr>Este aplicativo requer uma versao Java Runtime Environment superior a 1.0.0.</jreVersionErr>
+    <jreVersionErr>Este aplicativo requer uma versao Java Runtime Environment superior a </jreVersionErr>
     <launcherErr>O registro refere-se a uma instalacao inexistente do Java Runtime Environment ou o tempo de execucao esta corrompido.</launcherErr>
     <instanceAlreadyExistsMsg>Uma instancia do aplicativo ja esta em execucao.</instanceAlreadyExistsMsg>
   </messages>

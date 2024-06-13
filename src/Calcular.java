@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.Arrays;
 
 //Anotacoes:
@@ -637,7 +638,12 @@ public class Calcular {
 
                             //Fazendo o calculo da potencia
                             System.out.println("Esquerda: "+valorEsquerda+" || Direita: "+valorDireita);
-                            valores[pot[count]+seguirEsquerda] = String.valueOf(Math.pow(valorEsquerda.doubleValue(), valorDireita.doubleValue()));
+
+                            if (valorDireita.remainder(UM).compareTo(ZERO) == 0) {
+                                valores[pot[count]+seguirEsquerda] = String.valueOf(valorEsquerda.pow(valorDireita.intValueExact()));
+                            }else{
+                                valores[pot[count]+seguirEsquerda] = String.valueOf(Math.pow(valorEsquerda.doubleValue(), valorDireita.doubleValue()));
+                            }
                                     
                             //valores[pot[count]+seguirEsquerda] = String.valueOf((valorEsquerda.multiply(valorDireita)));
                             System.out.println("Valor: "+valores[pot[count]+seguirEsquerda]);
@@ -753,10 +759,10 @@ public class Calcular {
                                     System.out.println("Valor: "+valores[multiplicacaoDivisao[count]+seguirEsquerda]);
                                     break;
                                 case "/":
-                                    try {
-                                        valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf((valorEsquerda.divide(valorDireita)));
+                                    try {                                  
+                                        valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf((valorEsquerda.divide(valorDireita,new MathContext(App.QuantidadeCasas+1))));
                                         System.out.println("Valor: "+valores[multiplicacaoDivisao[count]+seguirEsquerda]);
-                                    } catch (Exception e) {
+                                    } catch (ArithmeticException e) {
                                         App.Erro("ERRO: DIVISÃO POR ZERO");
                                         return;
                                     }
@@ -766,7 +772,7 @@ public class Calcular {
                                     try {
                                         valores[multiplicacaoDivisao[count]+seguirEsquerda] = String.valueOf((valorEsquerda.remainder(valorDireita)));
                                         System.out.println("Valor: "+valores[multiplicacaoDivisao[count]+seguirEsquerda]);
-                                    } catch (Exception e) {
+                                    } catch (ArithmeticException e) {
                                         App.Erro("ERRO: DIVISÃO POR ZERO");
                                         return;
                                     }
