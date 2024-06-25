@@ -19,9 +19,9 @@ public class App{
     public static final short QUADRO_WIDTH = 350, QUADRO_HEIGHT = 500;
 
     public static JFrame quadro = new JFrame("Calculadora"); //O quadro sendo gerado aqui
-    public static ImageIcon icone;
+    public static ImageIcon icone; //Icone da calculadora
     public static DecimalFormat formatoDecimal; //Usado para formartar os valores, neste caso será formatado os valores numéricos para o português brasileiro.
-    public static byte QuantidadeCasas = 14;
+    public static byte QuantidadeCasas = 14; //Defini o número de casas decimais.
     public static String textoInserido = ""; //A variavel que irá armazenar o texto, que sera mostrada na area de texto
     public static Barra barra; //Anexando a variavel da classe Barra
     public static Tela1 tela1; //Anexando a variavel da classe Tela1
@@ -43,11 +43,8 @@ public class App{
         quadro.setLocationRelativeTo(null); //O quadro/tela é centralizado no meio.
         quadro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Serve para que quando o usuário fechar o programa, apertando o 'X', o programa irá parar de ser executado.
         quadro.setResizable(false); //Serve para impedir do usuário redimensionar o quadro/tela.
-        quadro.setLayout(null);
-        quadro.setBackground(new Color(0,0,0));
-        quadro.setUndecorated(true);
-        //ImageIcon icone = new ImageIcon("src/imagens/icone.png"); //Salvando a imagem do ícone em uma variável.
-        //quadro.setIconImage(icone.getImage()); //Anexando a imagem do ícone ao quadro.
+        quadro.setLayout(null); //Define o Layout para nulo.
+        quadro.setUndecorated(true); //Elimina o modelo padrão de janela.
     }
 
     private static void ArrastarTela()
@@ -77,14 +74,9 @@ public class App{
     }
 
     private static void DefinindoAreaTexto(){
-        //Border border = BorderFactory.createLineBorder(new Color(36, 100, 161), 5); //Definindo o molde da borda da area de texto.
-        //areaTexto.setBorder(border); //Anexando a borda a area de texto.
         areaTexto.setEditable(false); //Impossibilitando da area de texto ser editada com o mouse.
         areaTexto.setLineWrap(true); //Configurando uma quebra de linha, sempre quando os forem passar o limite da linha.
-        areaTexto.setBackground(new Color(255, 255, 255)); //Pinta a cor do fundo da area de texto.
-        areaTexto.setForeground(new Color(109, 135, 159)); //Pinta a cor do texto.
         areaTexto.setFont(new Font("Segoe", Font.BOLD, 22)); //Define a fonte do texto.
-        //areaTexto.setBounds(8,8,QUADROWIDTH-24,96);
     }
 
     public static  void CorCalculadora(){
@@ -96,19 +88,17 @@ public class App{
             //MODO ESCURO
             icone = new ImageIcon("src/imagens/iconeDark.png"); //Salvando a imagem do ícone em uma variável.
             quadro.setIconImage(icone.getImage()); //Anexando a imagem do ícone ao quadro.
-            barra.imagem.setIcon(icone);
+            barra.imagem.setIcon(icone); //Anexando a imagem do ícone na barra.
 
-            //areaTexto.setBorder(border); //Anexando a borda a area de texto.
-            tela1.painel.setBackground(new Color(0, 0, 176)); // Adicionando uma cor de fundo
+            tela1.painel.setBackground(DesignGeral.COR_BACKGROUND_PAINEL_ESCURO); // Adicionando uma cor de fundo
             tela1.botoesExtra.botaoModoEscuroELuz.setText("Claro");
-            //botoesExtra.botaoModoEscuroELuz.setForeground(new Color(0, 0, 255));
 
             tela1.painelAreaTexto.setVisible(false);//Se você tem amor pela sua vida, não mexa nessa linha de código.
             tela1.painelAreaTexto.setVisible(true); //Se você tem amor pela sua vida, não mexa nessa linha de código.
             areaTexto.setBackground(DesignGeral.COR_AREA_TEXTO_BACKGROUND_ESCURO); //Pinta a cor do fundo da area de texto.
             areaTexto.setForeground(DesignGeral.COR_AREA_TEXTO_FONTE_ESCURO); //Pinta a cor do texto.
-            border = BorderFactory.createLineBorder(new Color(0, 0, 161), 5); //Definindo o molde da borda da area de texto.
-            tela1.barraRolamento.setBorder(border);
+            border = BorderFactory.createLineBorder(DesignGeral.COR_AREA_TEXTO_BORDA_ESCURO, 5); //Definindo o molde da borda da area de texto.
+            tela1.barraRolamento.setBorder(border); //Adicionando a borda
 
             border = BorderFactory.createLineBorder(DesignGeral.COR_BOTAO_BORDA_ESCURO, 3);
             CorDosBotoes(DesignGeral.COR_BOTAO_BACKGROUND_ESCURO,DesignGeral.COR_BOTAO_FONTE_ESCURO,border,DesignGeral.COR_BOTAO_BACKGROUND_FECHAR_ESCURO,DesignGeral.COR_BOTAO_FONTE_BARRA_ESCURO);
@@ -127,9 +117,9 @@ public class App{
             //MODO CLARO
             icone = new ImageIcon("src/imagens/icone.png"); //Salvando a imagem do ícone em uma variável.
             quadro.setIconImage(icone.getImage()); //Anexando a imagem do ícone ao quadro.
-            barra.imagem.setIcon(icone);
+            barra.imagem.setIcon(icone); //Anexando a imagem do ícone na barra.
             
-            tela1.painel.setBackground(new Color(34, 107, 176)); // Adicionando uma cor de fundo
+            tela1.painel.setBackground(DesignGeral.COR_BACKGROUND_PAINEL); // Adicionando uma cor de fundo
             tela1.botoesExtra.botaoModoEscuroELuz.setText("Escuro");
             //botoesExtra.botaoModoEscuroELuz.setForeground(new Color(255, 0, 0));
 
@@ -137,8 +127,8 @@ public class App{
             tela1.painelAreaTexto.setVisible(true); //Se você tem amor pela sua vida, não mexa nessa linha de código.
             areaTexto.setBackground(DesignGeral.COR_AREA_TEXTO_BACKGROUND); //Pinta a cor do fundo da area de texto.
             areaTexto.setForeground(DesignGeral.COR_AREA_TEXTO_FONTE); //Pinta a cor do texto
-            border = BorderFactory.createLineBorder(new Color(36, 100, 161), 5); //Definindo o molde da borda da area de texto.
-            tela1.barraRolamento.setBorder(border);
+            border = BorderFactory.createLineBorder(DesignGeral.COR_AREA_TEXTO_BORDA, 5); //Definindo o molde da borda da area de texto.
+            tela1.barraRolamento.setBorder(border); //Adicionando a borda
 
             border = BorderFactory.createLineBorder(DesignGeral.COR_BOTAO_BORDA, 3);
             CorDosBotoes(DesignGeral.COR_BOTAO_BACKGROUND,DesignGeral.COR_BOTAO_FONTE,border,DesignGeral.COR_BOTAO_BACKGROUND_FECHAR,DesignGeral.COR_BOTAO_FONTE_BARRA);
@@ -196,7 +186,6 @@ public class App{
         tela1.botoesPadrao.botaoDivisao.setBackground(fundo); tela1.botoesPadrao.botaoDivisao.setForeground(fonte); tela1.botoesPadrao.botaoDivisao.setBorder(borda);
         tela1.botoesPadrao.botaoMultiplicacao.setBackground(fundo); tela1.botoesPadrao.botaoMultiplicacao.setForeground(fonte); tela1.botoesPadrao.botaoMultiplicacao.setBorder(borda);
         tela1.botoesPadrao.botaoPorcentagem.setBackground(fundo); tela1.botoesPadrao.botaoPorcentagem.setForeground(fonte); tela1.botoesPadrao.botaoPorcentagem.setBorder(borda);
-        tela1.botoesPadrao.botaoCasas.setBackground(fundo); tela1.botoesPadrao.botaoCasas.setForeground(fonte); tela1.botoesPadrao.botaoCasas.setBorder(borda);
         tela1.botoesPadrao.botaoRaizQuadrada.setBackground(fundo); tela1.botoesPadrao.botaoRaizQuadrada.setForeground(fonte); tela1.botoesPadrao.botaoRaizQuadrada.setBorder(borda);
         tela1.botoesPadrao.botaoElevadoPotenciaDois.setBackground(fundo); tela1.botoesPadrao.botaoElevadoPotenciaDois.setForeground(fonte); tela1.botoesPadrao.botaoElevadoPotenciaDois.setBorder(borda);
         tela1.botoesPadrao.botaoUmSobreX.setBackground(fundo); tela1.botoesPadrao.botaoUmSobreX.setForeground(fonte); tela1.botoesPadrao.botaoUmSobreX.setBorder(borda);
@@ -224,6 +213,7 @@ public class App{
         tela1.botoesExtra.botaoR.setBackground(fundo); tela1.botoesExtra.botaoR.setForeground(fonte); tela1.botoesExtra.botaoR.setBorder(borda);
         tela1.botoesExtra.botaoA.setBackground(fundo); tela1.botoesExtra.botaoA.setForeground(fonte); tela1.botoesExtra.botaoA.setBorder(borda);
         tela1.botoesExtra.botaoP.setBackground(fundo); tela1.botoesExtra.botaoP.setForeground(fonte); tela1.botoesExtra.botaoP.setBorder(borda);
+        tela1.botoesExtra.botaoCasas.setBackground(fundo); tela1.botoesExtra.botaoCasas.setForeground(fonte); tela1.botoesExtra.botaoCasas.setBorder(borda);
         tela1.botoesExtra.botaoModoEscuroELuz.setBackground(fundo); tela1.botoesExtra.botaoModoEscuroELuz.setForeground(fonte); tela1.botoesExtra.botaoModoEscuroELuz.setBorder(borda);
         barra.botaoMinimizar.setBackground(fundo); barra.botaoMinimizar.setForeground(fonteBarra); barra.botaoMinimizar.setBorder(borda);
         barra.botaoFechar.setBackground(fundoFechar); barra.botaoFechar.setForeground(fonteBarra); barra.botaoFechar.setBorder(borda);

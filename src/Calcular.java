@@ -4,12 +4,8 @@ import java.util.Arrays;
 
 //Anotacoes:
 
-//O sistema faz o calculo tendo como refencia sempre como prioritario os valores da direita para a esquerda.
+//O sistema faz o calculo tendo como refencia sempre como prioritario os valores da esquerda para a direita.
 //O sistema quando verifica um valor com um sinal (+ ou -), ele aplica com o valor numérico mais próximo a ele na direita.
-
-//O sistema de multiplicacao e divisao faz o sistema andar com prioridade para a direita e depois esquerda.
-//O sistema de multiplicacao e divisao caminha para a esquerda até ter um valor numerico e um possivel sinal (+ ou -).
-//O sistema de multiplicacao e divisao caminha para a direita até achar um valor numérico.
 
 public class Calcular {
 
@@ -223,7 +219,7 @@ public class Calcular {
                     //Loopings do calculo, com base na ordem prioritária dos parenteses
 
                     //Looping de prioridade a fatorial e modulo
-                    for (int count = contagemFatorialModulo; count >= 0; count--) {
+                    for (int count = 0; count < contagemFatorialModulo; count++) {
 
                         BigDecimal valorDireita = new BigDecimal(0); //Pega o valor da esquerda e o da direita, para realizar o calculo
 
@@ -312,7 +308,7 @@ public class Calcular {
                     }
 
                     //Looping de prioridade a logaritmos
-                    for (int count = contagemLog; count >= 0; count--) {
+                    for (int count = 0; count < contagemLog; count++) {
 
                         BigDecimal valorEsquerda = new BigDecimal(0), valorDireita = new BigDecimal(0); //Pega o valor da esquerda e o da direita, para realizar o calculo
 
@@ -410,6 +406,12 @@ public class Calcular {
 
                             //Fazendo o calculo dos logaritmo
                             System.out.println("Esquerda: "+valorEsquerda+" || Direita: "+valorDireita);
+
+                            if (valorEsquerda.doubleValue() <=0 || valorDireita.doubleValue() <=0) {
+                                App.Erro("ERRO: \nLOGARITMO INVÁLIDO");
+                                return;
+                            }
+                            
                             double vE = Math.log10(valorEsquerda.doubleValue());
                             double vD = Math.log10(valorDireita.doubleValue());
 
@@ -428,7 +430,7 @@ public class Calcular {
                     }
 
                     //Looping de prioridade a raiz
-                    for (int count = contagemRaiz; count >= 0; count--) {
+                    for (int count = 0; count < contagemRaiz; count++) {
 
                         BigDecimal valorEsquerda = new BigDecimal(0), valorDireita = new BigDecimal(0); //Pega o valor da esquerda e o da direita, para realizar o calculo
 
@@ -526,6 +528,11 @@ public class Calcular {
 
                             //Fazendo o calculo da raiz
                             System.out.println("Esquerda: "+valorEsquerda+" || Direita: "+valorDireita);
+                            
+                            if (valorEsquerda.doubleValue() == 0) {
+                                App.Erro("ERRO: DIVISÃO POR ZERO");
+                                return;
+                            }
 
                             valores[raiz[count]+seguirEsquerda] = String.valueOf(Math.pow(valorDireita.doubleValue(), 1/valorEsquerda.doubleValue()));
                                 
@@ -534,13 +541,12 @@ public class Calcular {
 
                             //Serve para computar que esse valor não existe mais para analise
                             raiz[count] = -2;
-                            
                         }
 
                     }
 
                     //Looping de prioridade a potencia
-                    for (int count = contagemPot; count >= 0; count--) {
+                    for (int count = 0; count < contagemPot; count++) {
 
                         BigDecimal valorEsquerda = new BigDecimal(0), valorDireita = new BigDecimal(0); //Pega o valor da esquerda e o da direita, para realizar o calculo
 
@@ -656,7 +662,7 @@ public class Calcular {
                     }
 
                     //Looping de prioridade a multiplicacao, divisisao e derivados
-                    for (int count = contagemMD; count >= 0; count--) {
+                    for (int count = 0; count < contagemMD; count++) {
 
                         BigDecimal valorEsquerda = new BigDecimal(0), valorDireita = new BigDecimal(0); //Pega o valor da esquerda e o da direita, para realizar o calculo
 

@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Gravador {
 
-    private static final String NOMEDOARQUIVO = "src/armazenamento/calculadora.txt"; //constante do diretório do arquivo.
+    private static final String NOMEDOARQUIVO = "src/armazenamento/calculadora_cor.txt"; //constante do diretório do arquivo.
     public static boolean dado = false;
 
     public static void PegarGravacao(){
@@ -30,18 +30,6 @@ public class Gravador {
         try {
             // Cria um BufferedWriter para escrever texto de forma mais eficiente
             escritor = new BufferedWriter(new FileWriter(NOMEDOARQUIVO,false));
-            
-            /*
-            if (dado == true) {
-                escritor.write('0');
-                dado = false;
-                //System.out.println('0');
-            }
-            else{
-                escritor.write('1');
-                dado = true;
-                //System.out.println('1');
-            }*/
 
             // Escreve o texto no arquivo
             escritor.write(dado ? '0' : '1');

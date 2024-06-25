@@ -25,6 +25,15 @@ public class DesignGeral {
 
     /**********************************/
 
+    /************* PAINEL *************/
+
+    //Cor da borda da painel
+    public static final Color
+    COR_BACKGROUND_PAINEL = new Color(34, 107, 176),
+    COR_BACKGROUND_PAINEL_ESCURO = new Color(0, 0, 176);
+
+    /**********************************/
+
     /************* AREA TEXTO *************/
 
     //Determina o posicionameto e o tamanho do area texto e o seu respectivo painel
@@ -39,6 +48,11 @@ public class DesignGeral {
     public static final Color 
     COR_AREA_TEXTO_BACKGROUND = new Color(66, 119, 169), //Claro
     COR_AREA_TEXTO_BACKGROUND_ESCURO = new Color(40, 61, 141); //Escuro
+
+    //Cor da borda da area de texto/barra de rolamento
+    public static final Color 
+    COR_AREA_TEXTO_BORDA = new Color(36, 100, 161), //Claro
+    COR_AREA_TEXTO_BORDA_ESCURO = new Color(0, 0, 161); //Escuro
 
     /**********************************/
 

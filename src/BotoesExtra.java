@@ -1,10 +1,13 @@
-import java.awt.*;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
-import javax.swing.*;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+import javax.swing.JButton;
 
 public class BotoesExtra {
 
-    public JButton botaoEM, botaoR, botaoF, botaoA, botaoP, botaoModoEscuroELuz; //botoes que serao aplicados.
+    public JButton botaoEM, botaoR, botaoF, botaoA, botaoP, botaoCasas, botaoModoEscuroELuz; //botoes que serao aplicados.
 
     //Euler-Mascheroni (γ) 0.57721566490153
     //Constante de Feigenbaum (δ) 4.66920160910299
@@ -15,14 +18,9 @@ public class BotoesExtra {
     public JButton BotaoEM(short x, short y, short width, short height){
         botaoEM = new JButton();
         botaoEM.setFont(new Font("Look and Feel", 1, 18));
-        botaoEM.setForeground(new Color(0, 0, 102));
         botaoEM.setText("γ");
-        botaoEM.setBorder(BorderFactory.createLineBorder(new Color(24, 96, 163), 3));
         botaoEM.setRequestFocusEnabled(false);
         botaoEM.setFocusable(false);
-        //botaoEM.setRolloverEnabled(true);
-        //botaoEM.setMargin(new Insets(2, 1000, 2, 14));
-        botaoEM.setBackground(new Color(59, 125, 187));
         botaoEM.setBounds(x, y,width, height);
 
         botaoEM.addActionListener((ActionEvent e) -> {
@@ -39,14 +37,9 @@ public class BotoesExtra {
     public JButton BotaoF(short x, short y, short width, short height){
         botaoF = new JButton();
         botaoF.setFont(new Font("Look and Feel", 1, 24));
-        botaoF.setForeground(new Color(0, 0, 102));
         botaoF.setText("δ");
-        botaoF.setBorder(BorderFactory.createLineBorder(new Color(24, 96, 163), 3));
         botaoF.setRequestFocusEnabled(false);
         botaoF.setFocusable(false);
-        //botaoF.setRolloverEnabled(true);
-        //botaoF.setMargin(new Insets(2, 1000, 2, 14));
-        botaoF.setBackground(new Color(59, 125, 187));
         botaoF.setBounds(x, y,width, height);
 
         botaoF.addActionListener((ActionEvent e) -> {
@@ -63,14 +56,9 @@ public class BotoesExtra {
     public JButton BotaoR(short x, short y, short width, short height){
         botaoR = new JButton();
         botaoR.setFont(new Font("Look and Feel", 1, 20));
-        botaoR.setForeground(new Color(0, 0, 102));
         botaoR.setText("μ");
-        botaoR.setBorder(BorderFactory.createLineBorder(new Color(24, 96, 163), 3));
         botaoR.setRequestFocusEnabled(false);
         botaoR.setFocusable(false);
-        //botaoR.setRolloverEnabled(true);
-        //botaoR.setMargin(new Insets(2, 1000, 2, 14));
-        botaoR.setBackground(new Color(59, 125, 187));
         botaoR.setBounds(x, y,width, height);
 
         botaoR.addActionListener((ActionEvent e) -> {
@@ -87,14 +75,9 @@ public class BotoesExtra {
     public JButton BotaoA(short x, short y, short width, short height){
         botaoA = new JButton();
         botaoA.setFont(new Font("Look and Feel", 1, 24));
-        botaoA.setForeground(new Color(0, 0, 102));
         botaoA.setText("G");
-        botaoA.setBorder(BorderFactory.createLineBorder(new Color(24, 96, 163), 3));
         botaoA.setRequestFocusEnabled(false);
         botaoA.setFocusable(false);
-        //botaoA.setRolloverEnabled(true);
-        //botaoA.setMargin(new Insets(2, 1000, 2, 14));
-        botaoA.setBackground(new Color(59, 125, 187));
         botaoA.setBounds(x, y,width, height);
 
         botaoA.addActionListener((ActionEvent e) -> {
@@ -111,14 +94,9 @@ public class BotoesExtra {
     public JButton BotaoP(short x, short y, short width, short height){
         botaoP = new JButton();
         botaoP.setFont(new Font("Look and Feel", 1, 20));
-        botaoP.setForeground(new Color(0, 0, 102));
         botaoP.setText("φ");
-        botaoP.setBorder(BorderFactory.createLineBorder(new Color(24, 96, 163), 3));
         botaoP.setRequestFocusEnabled(false);
         botaoP.setFocusable(false);
-        //botaoP.setRolloverEnabled(true);
-        //botaoP.setMargin(new Insets(2, 1000, 2, 14));
-        botaoP.setBackground(new Color(59, 125, 187));
         botaoP.setBounds(x, y,width, height);
 
         botaoP.addActionListener((ActionEvent e) -> {
@@ -132,17 +110,53 @@ public class BotoesExtra {
         return botaoP;
     }
 
+    public JButton BotaoCasas(short x, short y, short width, short height){
+        botaoCasas = new JButton();
+        botaoCasas.setFont(new Font("Look and Feel", 1, 16));
+        botaoCasas.setText("14I14");
+        botaoCasas.setRequestFocusEnabled(false);
+        botaoCasas.setFocusable(false);
+        botaoCasas.setBounds(x, y,width, height);
+
+        botaoCasas.addActionListener((ActionEvent e) -> {
+
+            DecimalFormatSymbols simbolos = new DecimalFormatSymbols(Locale.FRANCE);
+            simbolos.setDecimalSeparator(',');
+
+            App.QuantidadeCasas++;
+            if (App.QuantidadeCasas > 14) {
+                App.QuantidadeCasas = 0;
+                App.formatoDecimal = new DecimalFormat("#", simbolos);
+            }
+            else{
+
+                String casas = "";
+
+                for (int i = 0; i < App.QuantidadeCasas; i++) {
+                    casas += "#";
+                }
+
+                App.formatoDecimal = new DecimalFormat("#."+casas, simbolos);
+            }
+
+            if (App.QuantidadeCasas < 10) {
+                botaoCasas.setText("0"+App.QuantidadeCasas+"I14");
+            }else{
+                botaoCasas.setText(App.QuantidadeCasas+"I14");
+            }
+
+        });
+
+        return botaoCasas;
+    }
+    
+
     public JButton BotaoModoEscuroELuz(short x, short y, short width, short height){
         botaoModoEscuroELuz = new JButton();
         botaoModoEscuroELuz.setFont(new Font("Look and Feel", 1, 24));
-        botaoModoEscuroELuz.setForeground(new Color(0, 0, 102));
         botaoModoEscuroELuz.setText("Escuro");
-        botaoModoEscuroELuz.setBorder(BorderFactory.createLineBorder(new Color(24, 96, 163), 3));
         botaoModoEscuroELuz.setRequestFocusEnabled(false);
         botaoModoEscuroELuz.setFocusable(false);
-        //botaoModoEscuroELuz.setRolloverEnabled(true);
-        //botaoModoEscuroELuz.setMargin(new Insets(2, 1000, 2, 14));
-        botaoModoEscuroELuz.setBackground(new Color(59, 125, 187));
         botaoModoEscuroELuz.setBounds(x, y,width, height);
 
         botaoModoEscuroELuz.addActionListener((ActionEvent e) -> {
